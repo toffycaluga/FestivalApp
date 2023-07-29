@@ -74,3 +74,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "cancancan", "~> 3.5"
+
+gem "annotate", "~> 3.2"
