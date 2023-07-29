@@ -1,0 +1,2 @@
+module Organizador::DashboardHelper
+end
