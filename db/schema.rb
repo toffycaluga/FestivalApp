@@ -50,7 +50,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_131629) do
     t.datetime "remember_created_at"
     t.string "name"
     t.string "phone_number"
-    t.string "role"
+    t.string "role", default: "Usuario"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "confirmation_token"
