@@ -1,0 +1,16 @@
+<nav class="navbar nav" >
+    <ul class="container-fluid">
+        <li class="nav-item">
+            <%= current_user.name%>
+            <%= current_user.role%>
+        </li>
+        <li class="nav-item">
+            
+            <% if user_signed_in? %>
+                <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete , class: "btn btn-outline-danger" %>    
+            <% else %>
+            <% end %>
+            
+        </li>
+    </ul>
+</nav>
