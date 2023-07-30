@@ -18,11 +18,16 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable
+         :recoverable, :rememberable, :validatable,
+         :confirmable
   #CanCanCan
   ROLES = %w[Admin Jurado Usuario Organizador].freeze
 
   #Validaciones 
   validates :name, presence: true
   validates :phone_number, presence: true
+
+  # Relaciones a active storage
+  has_one_attached :profile_photo
+
 end
