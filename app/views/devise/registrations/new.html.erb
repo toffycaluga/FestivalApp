@@ -13,7 +13,8 @@
   </div>
   <div class="field">
     <%= f.label :profile_photo %><br/>
-    <%= f.file_field :profile_photo %>
+    <%= f.file_field :profile_photo, id: "avatar-input" %>
+    <div id="avatar-preview"></div>
   </div>
   <div class="field">
     <%= f.label :phone_number %><br />

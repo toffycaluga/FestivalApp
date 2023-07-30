@@ -30,4 +30,19 @@ class User < ApplicationRecord
   # Relaciones a active storage
   has_one_attached :profile_photo
 
+  # Redimensionar la imagen antes de guardarla
+  after_commit :resize_profile_photo, on: :create
+
+  private
+
+  def resize
+    return unless profile_photo.attached?
+
+    # Redimensionar si el ancho es mayor que 800 píxeles
+    if profile_photo.blob.width > 800
+      profile_photo.variant(resize_to_limit: [800, nil]).processed
+    end
+  end
+  
+
 end

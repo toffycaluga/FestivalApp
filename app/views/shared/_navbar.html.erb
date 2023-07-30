@@ -1,14 +1,21 @@
 <nav class="navbar nav" >
     <ul class="container-fluid">
         <li class="nav-item">
+            <% if current_user.profile_photo.present? %>
+                <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo navbar-brand" %>
+            <% else %>
+                <i class="fa-solid fa-circle-user navbar-brand"></i>
+            <% end %> 
+
             <%= current_user.name%>
             <%= current_user.role%>
         </li>
         <li class="nav-item">
             
             <% if user_signed_in? %>
-                <%= link_to 'Cerrar sesion', destroy_user_session_path, method: :delete , class: "btn btn-outline-danger" %>    
+                <%= button_to 'Cerrar sesion', destroy_user_session_path, method: :delete , class: "btn btn-outline-danger" %>    
             <% else %>
+                <%= link_to 'iniciar sesion', new_user_session_path %>
             <% end %>
             
         </li>
