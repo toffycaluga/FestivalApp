@@ -1,8 +1,8 @@
 <nav class="navbar nav" >
     <ul class="container-fluid">
         <li class="nav-item">
-            <% if current_user.profile_photo.present? %>
-                <%= image_tag current_user.profile_photo,alt:"profile_photo",class:"profile_photo navbar-brand" %>
+            <% if current_user.avatar.present? %>
+                <%= image_tag current_user.avatar,alt:"avatar",class:"avatar navbar-brand" %>
             <% else %>
                 <i class="fa-solid fa-circle-user navbar-brand"></i>
             <% end %> 
