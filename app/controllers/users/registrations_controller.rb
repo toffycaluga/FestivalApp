@@ -10,9 +10,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+     
+    #  @user = User.new(user_params)
+
+    #  # Redimensionar y guardar solo la variante en Amazon S3
+    #  if @user.avatar.attached? && @user.avatar.blob.image?
+    #    avatar_variant = @user.avatar.variant(resize_to_limit: [800, 800]).processed
+    #    @user.avatar = avatar_variant
+    #  end
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -59,4 +67,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  private
+
+  def user_params
+    params.require(:user).permit(:name, :email, :phone_number, :avatar, :password, :password_confirmation)
+  end
 end
