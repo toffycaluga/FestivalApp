@@ -1,0 +1,2 @@
+module Jurado::DashboardHelper
+end
