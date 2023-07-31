@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'home/index'
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions: 'users/sessions'
+  }
 
   # Rutas para los dashboards de cada rol
   namespace :admin do

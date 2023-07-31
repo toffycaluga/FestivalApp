@@ -28,10 +28,6 @@ class User < ApplicationRecord
   validates :phone_number, presence: true
 
   # Relaciones a active storage
-  has_one_attached :avatar do |attachable|
-    attachable.variant :thumb,resize_to_limit:[800,800]
-  end
-
+  has_one_attached :avatar
   
-
 end
