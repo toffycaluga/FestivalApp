@@ -1,10 +1,15 @@
 <%- if controller_name != 'sessions' %>
-  <%= link_to "Log in", new_session_path(resource_name) ,class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1"%><br />
+  <p class="text-secondary">
+    ¿Ya tienes cuenta?
+  <%= link_to "Log in", new_session_path(resource_name) ,class:"link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1"%><br />
+  </p>
 <% end %>
 
 <%- if devise_mapping.registerable? && controller_name != 'registrations' %>
-  p
-  <%= link_to "Sign up", new_registration_path(resource_name) ,class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1"%><br />
+  <p class= "text-secondary ">Únete al Espectáculo, ¡registrate aquí!
+  
+  <%= link_to "Sign up", new_registration_path(resource_name) ,class:"link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1",data: { turbolinks_eval: 'true' }%><br />
+  </p>
 <% end %>
 
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
@@ -21,6 +26,6 @@
 
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
-    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false },class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1" %><br />
+    <%= button_to "Sign in with #{OmniAuth::Utils.camelize(provider)}", omniauth_authorize_path(resource_name, provider), data: { turbo: false },class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1"  %><br />
   <% end %>
 <% end %>

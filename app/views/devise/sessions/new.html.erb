@@ -12,7 +12,7 @@
 
       <div class="field form-outline m-3">
         <%= f.label :password ,class:"form-label"%><br />
-        <%= f.password_field :password, autocomplete: "current-password" , class: "form-control"%>
+        <%= f.password_field :password, autocomplete: "current-password" , class: "form-control", onChange:"setupAvatarPreview()"%>
       </div>    
  
   <% if devise_mapping.rememberable? %>
@@ -23,7 +23,7 @@
   <% end %>
 
   <div class="actions text-center">
-    <%= f.submit "Log in",class:"btn btn-primary  px-5 mb-4 " %>
+    <%= f.submit "Log in",class:"btn btn-primary px-5 mb-4 " %>
   </div>
 <% end %>
 

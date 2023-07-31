@@ -11,7 +11,10 @@
         hsl(218, 41%, 30%) 35%,
         hsl(218, 41%, 20%) 75%,
         hsl(218, 41%, 19%) 80%,
-        transparent 100%);
+        transparent 100%)
+  }
+  body.background-image {
+    background-size: cover; /* O cualquier otro estilo que desees */
   }
 
   #radius-shape-1 {
