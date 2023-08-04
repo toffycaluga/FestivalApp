@@ -4,4 +4,4 @@
 import "@hotwired/turbo-rails"
 
 import "controllers"
-// import "./avatar_preview.js";
+import "./admin_views.js";
