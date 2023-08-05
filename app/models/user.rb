@@ -29,5 +29,8 @@ class User < ApplicationRecord
 
   # Relaciones a active storage
   has_one_attached :avatar
+
+  #Relacionnes a muchos 
+  has_many :festivals
   
 end

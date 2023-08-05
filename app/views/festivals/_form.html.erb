@@ -1,0 +1,42 @@
+<%= form_with(model: festival) do |form| %>
+  <% if festival.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(festival.errors.count, "error") %> prohibited this festival from being saved:</h2>
+
+      <ul>
+        <% festival.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div>
+    <%= form.label :year, style: "display: block" %>
+    <%= form.number_field :year %>
+  </div>
+
+  <div>
+    <%= form.label :state, style: "display: block" %>
+    <%= form.check_box :state %>
+  </div>
+
+  <div>
+    <%= form.label :application_state, style: "display: block" %>
+    <%= form.check_box :application_state %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>
