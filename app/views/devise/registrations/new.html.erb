@@ -1,42 +1,80 @@
+
 <h2>Sign up</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name),html: { multipart: true }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+  <div class="field form-outline mb-4">
+    <%= f.label :email , class:"form-label"%><br />
+    <%= f.email_field :email, autofocus: false, autocomplete: "email" ,class:"form-control"%>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "email" %>
-  </div>
-  <div class="field">
-    <%= f.label :avatar %><br/>
-    <%= f.file_field :avatar, id: "avatar-input" %>
-    <div id="avatar-preview"></div>
-  </div>
-  <div class="field">
-    <%= f.label :phone_number %><br />
-    <%= f.text_field :phone_number, autofocus: true, autocomplete: "email" %>
+  <div class="field form-outline mb-4">
+    <%= f.label :name , class:"form-label"%><br />
+    <%= f.text_field :name, autofocus: false, autocomplete: "name",class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password %>
+  <%# Aqui va el avatar %>
+  <div class="field ">
+    <div id="avatar-preview-container">
+      <%= image_tag 'default_avatar.png' ,class:"avatar-preview-img"%>
+    </div>
+    <%= f.label :avatar , class:"form-label"%><br/>
+    <%= f.file_field :avatar, id: "avatar-input" ,class:"form-control"%>
+  </div>
+  <div class="field form-outline mb-4">
+    <%= f.label :phone_number , class:"form-label"%><br />
+    <%= f.text_field :phone_number, autofocus: false, autocomplete: "phone_number",class:"form-control" %>
+  </div>
+
+  <div class="field form-outline mb-4">
+    <%= f.label :password , class:"form-label"%>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
   </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+  <div class="field form-outline mb-4">
+    <%= f.label :password_confirmation , class:"form-label"%><br />
+    <%= f.password_field :password_confirmation, autocomplete: "new-password",class:"form-control" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up" %>
+    <%= f.submit "Sign up", class:"btn btn-primary px-5 my-4" %>
   </div>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+</div>
+
+
+ <script type="module">
+  document.addEventListener('turbo:load', function() {
+    setupAvatarPreview();
+  });
+  function setupAvatarPreview() {
+    console.log("Evento activado");
+    const avatarInput = document.getElementById("avatar-input");
+    const previewImage = document.querySelector(".avatar-preview-img");
+
+    // Mostrar la imagen por defecto en la vista previa
+    previewImage.src = "/assets/default_avatar.png";
+
+    avatarInput.addEventListener("change", function () {
+        const file = avatarInput.files[0];
+        if (file) {
+            const reader = new FileReader();
+
+            reader.addEventListener("load", function () {
+                previewImage.src = reader.result;
+            });
+
+            reader.readAsDataURL(file);
+        } else {
+            // Si el usuario no selecciona una imagen, mostrar la imagen por defecto nuevamente
+            previewImage.src = "/assets/default_avatar.png";
+        }
+    });
+};
+</script>

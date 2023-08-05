@@ -3,8 +3,6 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {
     sessions: 'users/sessions'
   }
-
-  # Rutas para los dashboards de cada rol
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
   end
@@ -20,9 +18,7 @@ Rails.application.routes.draw do
   namespace :organizador do
     get 'dashboard', to: 'dashboard#index'
   end
-  root 'home#index'
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  # Definir la ruta root según el rol del usuario
+  root 'home#dashboard_redirect'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
 end

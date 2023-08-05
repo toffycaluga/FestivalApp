@@ -22,6 +22,6 @@ module FestivalApp
      config.before_configuration do
       Figaro.load
     end
-
+    config.i18n.default_locale = :es
   end
 end

@@ -24,4 +24,22 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
+  protected
+
+  # Este método determinará a dónde redirigir al usuario después de iniciar sesión.
+  def after_sign_in_path_for(resource)
+    case resource.role
+    when 'Admin'
+      admin_dashboard_path
+    when 'Jurado'
+      jurado_dashboard_path
+    when 'Usuario'
+      usuario_dashboard_path
+    when 'Organizador'
+      organizador_dashboard_path
+    else
+      # Si el usuario no tiene un rol válido, puedes redirigirlo a alguna otra página, como la página de inicio.
+      root_path
+    end
+  end
 end
