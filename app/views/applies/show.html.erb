@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @apply %>
+
+<div>
+  <%= link_to "Edit this apply", edit_apply_path(@apply) %> |
+  <%= link_to "Back to applies", applies_path %>
+
+  <%= button_to "Destroy this apply", @apply, method: :delete %>
+</div>

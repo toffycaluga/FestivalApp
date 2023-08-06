@@ -1,0 +1,19 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  act: MyString
+  description: MyText
+  video_url: MyString
+  festival: one
+  user: one
+  category: one
+
+two:
+  name: MyString
+  act: MyString
+  description: MyText
+  video_url: MyString
+  festival: two
+  user: two
+  category: two

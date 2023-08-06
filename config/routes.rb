@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources :festivals
+  resources :festivals do
+    resources :applies
+  end
   get 'home/index'
   devise_for :users, controllers: {
     sessions: 'users/sessions'

@@ -27,7 +27,8 @@
           <% if current_user.role == "Admin" %>
             <%= link_to "Show this festival", festival %>
           <% elsif current_user.role == "Usuario"%>
-            eres un usuario
+            <%= link_to 'Postular', new_festival_apply_path(festival) %>
+
           <% end %>
           
 

@@ -37,5 +37,5 @@ class User < ApplicationRecord
 
   #Relacionnes a muchos 
   has_many :festivals, dependent: :destroy
-  
+  has_many :applies , dependent: :destroy
 end
