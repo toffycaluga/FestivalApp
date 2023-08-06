@@ -14,9 +14,10 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <%= link_to  root_path, class:"nav-link" do %>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                <% end %>
             </li>
 
             <!-- Divider -->
@@ -29,19 +30,26 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
+                <%= link_to  festivals_path, class:"nav-link collapsed" do %>
+                
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Festivales</span>
-                </a>
+                
+                
+                <% end %>
+                
                 
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
+                <%= link_to  new_festival_path , class:"nav-link colapsed" do%>
+                
                     <i class="fa-solid fa-plus"></i>
                     <span>Nuevo Festival</span>
-                </a>
+                
+                <% end %>
+                
             </li>
 
             <!-- Divider -->

@@ -4,5 +4,5 @@ class Festival < ApplicationRecord
     
   
   # Relaciones a active storage
-  has_one_attached :avatar
+  has_one_attached :festival_logo
 end

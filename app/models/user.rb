@@ -31,6 +31,6 @@ class User < ApplicationRecord
   has_one_attached :avatar
 
   #Relacionnes a muchos 
-  has_many :festivals
+  has_many :festivals, dependent: :destroy
   
 end

@@ -10,33 +10,79 @@
       </ul>
     </div>
   <% end %>
+  <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4" >
+        <% if festival.festival_logo.present? %>
+          <%= image_tag festival.festival_logo, class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% else %>
+          <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Logo del Festival</h5>
+        <p class="card-text">Agrega un logo a tu festival para facilitar su reconocimiento y hacerlo más atractivo tanto para los participantes como para los administradores.</p>
+        <p class="card-text"><small class="text-muted">
+            <div class="field mb-2">
+            <%= form.label :festival_logo %><br>
+            <%= form.file_field :festival_logo  , class:"form-control-file" ,id:"festival_festival_logo"%>
+        </div>
+        </small></p>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="field mb-2">
+    <%= form.label "Nombre del festival", style: "display: block" %>
+    <%= form.text_field :name , class:"form-control"%>
+  </div>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+   
+
+  <div  class="field mb-2>
+    <%= form.label "Periodo a realizarce el Festival (Año)", style: "display: block" %>
+    <%= form.number_field :year , class:"form-control" %>
   </div>
 
   <div>
-    <%= form.label :year, style: "display: block" %>
-    <%= form.number_field :year %>
+    <p>
+      <strong>  
+      ¿Deseas activar las postulaciones?
+      </strong><br>
+      <small class="text-muted">Si no es así, desmarca la siguiente casilla. Recuerda que puedes activarlas en cualquier momento.</small>
+    </p>
+    <div class="form-check">
+      <%= form.check_box :application_state, class: "form-check-input", id: "application_state_checkbox" %>
+      <%= form.label :application_state, "Postulaciones activas", class: "form-check-label mb-5" %>
+    </div>   
   </div>
 
-  <div>
-    <%= form.label :state, style: "display: block" %>
-    <%= form.check_box :state %>
-  </div>
+
 
   <div>
-    <%= form.label :application_state, style: "display: block" %>
-    <%= form.check_box :application_state %>
-  </div>
-
-  <div>
-    <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
-  </div>
-
-  <div>
-    <%= form.submit %>
+    <%= form.submit  class:"btn btn-primary" %>
   </div>
 <% end %>
+
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+  var input = document.getElementById('festival_festival_logo');
+  var previewImage = document.getElementById('preview-logo');
+
+  input.addEventListener('change', function(e) {
+    var file = e.target.files[0];
+    if (file) {
+      var reader = new FileReader();
+      reader.onload = function (e) {
+        previewImage.src = e.target.result;
+      }
+      reader.readAsDataURL(file);
+    } else {
+      previewImage.src = '/assets/image.png';
+    }
+  });
+});
+</script>

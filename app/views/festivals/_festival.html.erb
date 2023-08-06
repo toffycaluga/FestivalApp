@@ -1,27 +1,38 @@
-<div id="<%= dom_id festival %>">
-  <p>
-    <strong>Name:</strong>
-    <%= festival.name %>
-  </p>
 
-  <p>
-    <strong>Year:</strong>
-    <%= festival.year %>
-  </p>
+<div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4" >
+        
+        <% if festival.festival_logo.present? %>
+          <%= image_tag festival.festival_logo, class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% else %>
+          <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% end %>
+        
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <strong>Festival:</strong>
+        <h5 class="card-title"><%= festival.name %> 
+        <small><%= festival.year%></small>
+        </h5>
+        <p class="card-text"> 
+          <strong>
+          Postulaciones:
+          </strong>
+          <%= festival.application_state ? 'abiertas' : 'cerradas'%>
+        </p>
+        <div class="card-footer">
+          
+          <% if current_user.role == "Admin" %>
+            <%= link_to "Show this festival", festival %>
+          <% elsif current_user.role == "Usuario"%>
+            eres un usuario
+          <% end %>
+          
 
-  <p>
-    <strong>State:</strong>
-    <%= festival.state %>
-  </p>
-
-  <p>
-    <strong>Application state:</strong>
-    <%= festival.application_state %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= festival.user_id %>
-  </p>
-
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

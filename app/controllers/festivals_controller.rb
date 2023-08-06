@@ -1,6 +1,7 @@
 class FestivalsController < ApplicationController
+  layout 'admin_layout' 
   before_action :set_festival, only: %i[ show edit update destroy ]
-
+  load_and_authorize_resource
   # GET /festivals or /festivals.json
   def index
     @festivals = Festival.all
@@ -8,11 +9,12 @@ class FestivalsController < ApplicationController
 
   # GET /festivals/1 or /festivals/1.json
   def show
+    @festival=Festival.find(params[:id])
   end
 
   # GET /festivals/new
   def new
-    @festival = Festival.new
+    @festival = current_user.festivals.build
   end
 
   # GET /festivals/1/edit
@@ -21,7 +23,7 @@ class FestivalsController < ApplicationController
 
   # POST /festivals or /festivals.json
   def create
-    @festival = Festival.new(festival_params)
+    @festival = current_user.festivals.build(festival_params)
 
     respond_to do |format|
       if @festival.save
@@ -65,6 +67,6 @@ class FestivalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def festival_params
-      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id)
+      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo)
     end
 end
