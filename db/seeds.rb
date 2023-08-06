@@ -13,5 +13,14 @@ admin_user = User.create!(
     password: "password", # Cambia esta contraseña por una segura
     role: "Admin"
   )
+
   
   puts "Usuario administrador creado correctamente."
+
+# Crear las categorías
+Category.create(name: 'Artista')
+Category.create(name: 'Duo')
+Category.create(name: 'Grupo/Troup')
+Category.create(name: 'Payaso')
+
+puts 'Categorías creadas exitosamente.'
