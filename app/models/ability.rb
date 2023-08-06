@@ -13,6 +13,7 @@ class Ability
       # Definir las habilidades del jurado aquí, por ejemplo:
       # can :read, Submission
     when 'Usuario'
+      can :read , Festival
       # Definir las habilidades del usuario aquí
     when 'Organizador'
       # Definir las habilidades del organizador aquí

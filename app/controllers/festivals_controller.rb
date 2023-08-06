@@ -1,5 +1,5 @@
 class FestivalsController < ApplicationController
-  layout 'admin_layout' 
+  layout :set_layout
   before_action :set_festival, only: %i[ show edit update destroy ]
   load_and_authorize_resource
   # GET /festivals or /festivals.json
@@ -68,5 +68,23 @@ class FestivalsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def festival_params
       params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country)
+    end
+    def set_layout
+      case current_user.role
+      when 'Admin'
+        'admin_layout'
+      when 'Jurado'
+        authorize! :read, Festival # Por ejemplo, el jurado solo puede leer (ver) los festivales
+        'jurado_layout'
+      when 'Usuario'
+        authorize! :read, Festival # Por ejemplo, el usuario solo puede leer (ver) los festivales
+        'user_layout'
+      when 'Organizador'
+        authorize! :manage, Festival # Por ejemplo, el organizador puede gestionar (crear, editar, eliminar) los festivales
+        'organizador_layout'
+      else
+        # Si el rol del usuario no coincide con ninguno de los casos anteriores, utiliza el diseño predeterminado
+        'application'
+      end
     end
 end
