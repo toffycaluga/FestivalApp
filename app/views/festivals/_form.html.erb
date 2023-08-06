@@ -35,14 +35,25 @@
 </div>
   <div class="field mb-2">
     <%= form.label "Nombre del festival", style: "display: block" %>
-    <%= form.text_field :name , class:"form-control"%>
+    <%= form.text_field :name , class:"form-control", required: true%>
   </div>
 
-   
+   <div class="field">
+  <%= form.label 'Descripción corta para hacer más atractivo tu festival' %><br>
+  <%= form.text_area :description, class: "form-control" %>
+</div>
+
+<div class="field">
+  <%= form.label 'País donde se realizará el festival' %><br>
+  <%= form.text_field :country, class: "form-control", required: true %>
+</div>
+
 
   <div  class="field mb-2>
     <%= form.label "Periodo a realizarce el Festival (Año)", style: "display: block" %>
-    <%= form.number_field :year , class:"form-control" %>
+    <%= form.number_field :year , class:"form-control" , required: true%>
+
+
   </div>
 
   <div>
@@ -69,20 +80,20 @@
 
 <script>
   document.addEventListener('DOMContentLoaded', function() {
-  var input = document.getElementById('festival_festival_logo');
-  var previewImage = document.getElementById('preview-logo');
+    var input = document.getElementById('festival_festival_logo');
+    var previewImage = document.getElementById('preview-logo');
 
-  input.addEventListener('change', function(e) {
-    var file = e.target.files[0];
-    if (file) {
-      var reader = new FileReader();
-      reader.onload = function (e) {
-        previewImage.src = e.target.result;
+    input.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      } else {
+        previewImage.src = '/assets/image.png';
       }
-      reader.readAsDataURL(file);
-    } else {
-      previewImage.src = '/assets/image.png';
-    }
+    });
   });
-});
 </script>

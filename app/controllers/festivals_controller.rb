@@ -67,6 +67,6 @@ class FestivalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def festival_params
-      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo)
+      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country)
     end
 end
