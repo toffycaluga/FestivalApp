@@ -4,7 +4,7 @@
 
 <div id="applies">
   <% @applies.each do |apply| %>
-    <%=render partial: 'applies/apply', locals: { apply: apply } %>
+    <%= render 'applies/data_apply', apply: apply %>
     <p>
       <%= link_to "Show this apply", festival_apply_path(apply.festival, apply)%>
     </p>

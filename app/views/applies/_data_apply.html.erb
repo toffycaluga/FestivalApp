@@ -1,0 +1,37 @@
+<div class="card mb-3" style="max-width: 100%;">
+  <div class="row g-0">
+    <div class="col-md-4" >
+        
+        <% if apply.apply_image.present? %>
+          <%= image_tag apply.apply_image, class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% else %>
+          <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% end %>
+        
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title text-bold">Nombre :<%= apply.user.name %> 
+        </h5>
+        <p>
+            <strong>Nombre artistico: </strong>
+            <span> <%= apply.name%></span>
+
+        </p>
+        <p>
+            <strong>Categoria:</strong><span><%= apply.category.name%></span> 
+        </p>
+        <p>
+            <strong>Acto:</strong><span><%= apply.act%></span> 
+        </p>
+        <p class="card-text"> 
+          <strong>
+          Sobre mi
+          </strong><br>
+          <%= apply.description%>
+        </p>
+ 
+      </div>
+    </div>
+  </div>
+</div>

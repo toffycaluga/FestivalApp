@@ -6,7 +6,7 @@ class AppliesController < ApplicationController
   # GET /applies or /applies.json
   def index
     if current_user.role == "Usuario"
-      @user_applies = current_user.applies
+      @applies = current_user.applies
     elsif current_user.role == "Admin" || current_user.role == "Organizador"
     @applies = Apply.all
     end
@@ -80,7 +80,7 @@ class AppliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def apply_params
-      params.require(:apply).permit(:name, :act, :description, :video_url, :festival_id, :user_id, :category_id)
+      params.require(:apply).permit(:name,:apply_image, :act, :description, :video_url, :festival_id, :user_id, :category_id)
     end
     def set_layout
       case current_user.role

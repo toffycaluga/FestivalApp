@@ -1,64 +1,15 @@
-<div class="card">
-  
-     <div id="player">
-        <%# <%= youtube_embed(apply.video_url) %> %>
 
-     </div>
-
-    <%# <%=@video%> %>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div>
 <div id="<%= dom_id apply %>">
-  <p>
-    <strong>Name:</strong>
-    <%= apply.name %>
-  </p>
+<div class="card">
+  <iframe src="http://www.youtube.com/embed/<%= @video_id%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="embed-responsive-item" height="360px"></iframe>
 
-  <p>
-    <strong>Act:</strong>
-    <%= apply.act %>
-  </p>
-
-  <p>
-    <strong>Description:</strong>
-    <%= apply.description %>
-  </p>
-
-  <p>
-    <strong>Video url:</strong>
-    <%= apply.video_url %>
-  </p>
-
-  <p>
-    <strong>Festival:</strong>
-    <%= apply.festival_id %>
-  </p>
-
-  <p>
-    <strong>User:</strong>
-    <%= apply.user_id %>
-  </p>
-
-  <p>
-    <strong>Category:</strong>
-    <%= apply.category.name %>
-  </p>
+  <div class="card-body">
+    <%= render 'applies/data_apply', apply: apply %>
+    
+  </div>
+    <a href="#" class="btn btn-primary">Calificar</a>
+</div>
 
 
 </div>
 
-<div id="player">
-  video_id :<%=  @video_id %>
-</div>
-
-<iframe id="existing-iframe-example"
-        width="640" height="360"
-        src="http://www.youtube.com/embed/<%= @video_id%>"
-        frameborder="0"
-        style="border: solid 4px #37474F"
-        allowfullscreen
-></iframe>
