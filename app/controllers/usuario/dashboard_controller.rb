@@ -1,6 +1,9 @@
 class Usuario::DashboardController < ApplicationController
     layout 'user_layout' 
+    def applies
+        @applies = current_user.applies
+    end
     def index
-        # Lógica y datos para el dashboard del Jurado (si es necesario)
+
     end
 end

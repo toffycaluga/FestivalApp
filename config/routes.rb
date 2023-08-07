@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
+
   end
 
   namespace :jurado do
@@ -16,6 +17,8 @@ Rails.application.routes.draw do
 
   namespace :usuario do
     get 'dashboard', to: 'dashboard#index'
+    get 'dashboard/applies', to: 'dashboard#applies'
+  
   end
 
   namespace :organizador do

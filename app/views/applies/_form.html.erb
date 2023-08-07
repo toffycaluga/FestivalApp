@@ -1,4 +1,4 @@
-<%= form_with(model: @applies) do |form| %>
+<%= form_with(model: @festival.applies.build ,url: festival_applies_path(@festival)) do |form| %>
   <% if apply.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(apply.errors.count, "error") %> prohibited this apply from being saved:</h2>
@@ -10,43 +10,86 @@
       </ul>
     </div>
   <% end %>
-
+   <div class="card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4" >
+        <% if apply.apply_image.attached? %>
+          <%= image_tag festival.apply_image, class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% else %>
+          <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">Tu Imagen Artística o de tu acto</h5>
+        <p class="card-text">Sube una imagen que represente tu acto artístico. Procura que sea de buena calidad, ya que podría utilizarse en material relacionado con el festival.</p>
+        <p class="card-text"><small class="text-muted">
+            <div class="field mb-2">
+            <%= form.label "Imagen del Postulante" %><br>
+            <%= form.file_field :apply_image  , class:"form-control-file" ,id:"festival_festival_logo"%>
+        </div>
+        </small></p>
+      </div>
+    </div>
+  </div>
+</div>
   <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+    <%= form.label "Nombre Artistico o pseudonimo", style: "display: block" %>
+    <%= form.text_field :name, class:"form-control"  %>
   </div>
 
   <div>
     <%= form.label :act, style: "display: block" %>
-    <%= form.text_field :act %>
+    <%= form.text_field :act, class:"form-control"  %>
   </div>
 
   <div>
     <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+    <%= form.text_area :description , class:"form-control" %>
   </div>
 
   <div>
     <%= form.label :video_url, style: "display: block" %>
-    <%= form.text_field :video_url %>
+    <%= form.text_field :video_url , class:"form-control" %>
   </div>
 
   <div>
     <%= form.label :festival_id, style: "display: block" %>
-    <%= form.text_field :festival_id %>
+    <%= form.text_field :festival_id , class:"form-control" %>
   </div>
 
   <div>
     <%= form.label :user_id, style: "display: block" %>
-    <%= form.text_field :user_id %>
+    <%= form.text_field :user_id , class:"form-control"%>
   </div>
 
-  <div>
-    <%= form.label :category_id, style: "display: block" %>
-    <%= form.text_field :category_id %>
-  </div>
+ <div>
+  <%= form.label :category_id, style: "display: block" %>
+  <%= form.collection_select :category_id, Category.all, :id, :name,{ prompt: "Seleccionar categoría" }, { class: "form-select" }%>
+</div>
+
 
   <div>
     <%= form.submit %>
   </div>
 <% end %>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var input = document.getElementById('festival_festival_logo');
+    var previewImage = document.getElementById('preview-logo');
+
+    input.addEventListener('change', function(e) {
+      var file = e.target.files[0];
+      if (file) {
+        var reader = new FileReader();
+        reader.onload = function (e) {
+          previewImage.src = e.target.result;
+        }
+        reader.readAsDataURL(file);
+      } else {
+        previewImage.src = '/assets/image.png';
+      }
+    });
+  });
+</script>

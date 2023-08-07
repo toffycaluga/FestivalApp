@@ -1,4 +1,7 @@
 <h1>New apply</h1>
+<p>
+  <%= @festival.id%>
+</p>
 
 <%= render "form", apply: @apply %>
 
@@ -7,3 +10,4 @@
 <div>
   <%= link_to "Back to applies", festival_applies_path(@festival.id) %>
 </div>
+ 

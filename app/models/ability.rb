@@ -13,8 +13,14 @@ class Ability
       # Definir las habilidades del jurado aquí, por ejemplo:
       # can :read, Submission
     when 'Usuario'
-      can :read , Festival
       # Definir las habilidades del usuario aquí
+      can :read , Festival
+      can :new, Apply
+
+      can :manage, Apply do |apply|
+        user.id == apply.user_id
+      end
+       
     when 'Organizador'
       # Definir las habilidades del organizador aquí
     else

@@ -4,11 +4,16 @@ class AppliesController < ApplicationController
 
   # GET /applies or /applies.json
   def index
+    if current_user.role == "Usuario"
+      @user_applies = current_user.applies
+    elsif current_user.role == "Admin" || current_user.role == "Organizor"
     @applies = Apply.all
+    end
   end
 
   # GET /applies/1 or /applies/1.json
   def show
+    @apply.category=Category.find(@apply.category_id)
   end
 
   # GET /applies/new
@@ -16,6 +21,7 @@ class AppliesController < ApplicationController
     @festival = Festival.find(params[:festival_id])
     @apply = @festival.applies.build
   end
+  
 
   # GET /applies/1/edit
   def edit
@@ -24,11 +30,11 @@ class AppliesController < ApplicationController
   # POST /applies or /applies.json
   def create
     @festival = Festival.find(params[:festival_id])
-    @apply = current_user.applies.build(apply_params)
-
+    @apply = @festival.applies.build(apply_params)
+    @apply.user = current_user
     respond_to do |format|
       if @apply.save
-        format.html { redirect_to apply_url(@apply), notice: "Apply was successfully created." }
+        redirect_to request.fullpath, notice: 'Comentario creado correctamente.'
         format.json { render :show, status: :created, location: @apply }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -41,7 +47,7 @@ class AppliesController < ApplicationController
   def update
     respond_to do |format|
       if @apply.update(apply_params)
-        format.html { redirect_to apply_url(@apply), notice: "Apply was successfully updated." }
+        format.html { redirect_to festival_apply_path(@apply), notice: "Apply was successfully updated." }
         format.json { render :show, status: :ok, location: @apply }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -55,7 +61,7 @@ class AppliesController < ApplicationController
     @apply.destroy
 
     respond_to do |format|
-      format.html { redirect_to applies_url, notice: "Apply was successfully destroyed." }
+      format.html { redirect_to festival_applies_path, notice: "Apply was successfully destroyed." }
       format.json { head :no_content }
     end
   end
