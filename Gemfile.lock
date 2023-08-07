@@ -248,6 +248,7 @@ GEM
     websocket-extensions (0.1.5)
     xpath (3.2.0)
       nokogiri (~> 1.8)
+    youtube-embed (1.0.0)
     zeitwerk (2.6.9)
 
 PLATFORMS
@@ -276,6 +277,7 @@ DEPENDENCIES
   tzinfo-data
   web-console
   webdrivers
+  youtube-embed (~> 1.0)
 
 RUBY VERSION
    ruby 3.2.2p53

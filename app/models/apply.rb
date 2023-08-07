@@ -14,6 +14,9 @@
 #  updated_at  :datetime         not null
 #
 class Apply < ApplicationRecord
+   
+  # youtube_embed :video_url, {:with_description => true, :width => 450, :height => 300}
+  #  Relaciones
   belongs_to :festival
   belongs_to :user
   belongs_to :category

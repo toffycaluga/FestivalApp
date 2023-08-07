@@ -1,3 +1,4 @@
+require 'youtube_embed'
 class AppliesController < ApplicationController
   layout :set_layout
   before_action :set_apply, only: %i[ show edit update destroy ]
@@ -6,14 +7,19 @@ class AppliesController < ApplicationController
   def index
     if current_user.role == "Usuario"
       @user_applies = current_user.applies
-    elsif current_user.role == "Admin" || current_user.role == "Organizor"
+    elsif current_user.role == "Admin" || current_user.role == "Organizador"
     @applies = Apply.all
     end
   end
 
   # GET /applies/1 or /applies/1.json
   def show
-    @apply.category=Category.find(@apply.category_id)
+    @apply.category = Category.find(@apply.category_id)
+  
+    if @apply.video_url.present?
+      @video_id = extract_youtube_video_id(@apply.video_url)
+    end
+      
   end
 
   # GET /applies/new
@@ -21,7 +27,7 @@ class AppliesController < ApplicationController
     @festival = Festival.find(params[:festival_id])
     @apply = @festival.applies.build
   end
-  
+  1
 
   # GET /applies/1/edit
   def edit
@@ -94,4 +100,17 @@ class AppliesController < ApplicationController
         'application'
       end
     end
+    def extract_youtube_video_id(url)
+      if url.include?("youtube.com") || url.include?("youtu.be")
+        uri = URI.parse(url)
+        if uri.query
+          query_params = URI.decode_www_form(uri.query)
+          video_id_param = query_params.find { |param| param[0] == "v" }
+          return video_id_param[1] if video_id_param
+        else
+          return uri.path.split("/").last
+        end
+      end
+      nil
+    end    
 end

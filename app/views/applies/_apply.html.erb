@@ -1,3 +1,17 @@
+<div class="card">
+  
+     <div id="player">
+        <%# <%= youtube_embed(apply.video_url) %> %>
+
+     </div>
+
+    <%# <%=@video%> %>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
 <div id="<%= dom_id apply %>">
   <p>
     <strong>Name:</strong>
@@ -34,15 +48,16 @@
     <%= apply.category.name %>
   </p>
 
+
 </div>
-<div class="card">
-  
-  <iframe id="ytplayer" type="text/html" width="720" height="405"
-src="<%= apply.video_url%>"
-frameborder="0" allowfullscreen>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
+
+<div id="player">
+  video_id :<%=  @video_id %>
 </div>
+
+<iframe id="existing-iframe-example"
+        width="640" height="360"
+        src="<%= @video_id%>"
+        frameborder="0"
+        style="border: solid 4px #37474F"
+></iframe>
