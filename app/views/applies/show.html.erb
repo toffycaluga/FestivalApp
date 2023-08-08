@@ -3,8 +3,11 @@
 <%= render @apply %>
 
 <div>
-  <%= link_to "Edit this apply", edit_festival_apply_path(@apply) %> |
+  |
   <%= link_to "Back to applies", festival_applies_path %>
 
   <%= button_to "Destroy this apply", festival_apply_path(@apply.festival, @apply), method: :delete %>
 </div>
+
+
+

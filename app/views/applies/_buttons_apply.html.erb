@@ -1,0 +1,20 @@
+<div class=" btn-group dropdown no-arrow me-2">
+        <button type="button" class="nav-link btn btn-transparent  dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            
+                <i class="fa-solid fa-ellipsis-vertical"></i>
+        </button>
+        <ul class="dropdown-menu " aria-labelledby="dropdownMenu2">
+            <li>
+                <%= link_to edit_festival_apply_path(@apply.festival, @apply), class: " rounded nav-link", data: { bs_toggle: "tooltip", bs_placement: "top" }, title: "Editar Postulación" do %>
+                    <i class="fa-solid fa-pen-to-square m-2 text-black"></i>
+                    Editar Postulación
+                <% end %>
+            </li>
+            <li>   
+                <%= button_to festival_apply_path(@apply.festival, @apply), method: :delete, class: "nav-link ", form: { "data-confirm" => "Estas seguro que quieres eliminar tu Postulación" } do %>
+                    <i class="fa-solid fa-trash m-2"></i>
+                    Eliminar Postulación
+                <% end %>
+            </li>
+        </ul>
+    </div>

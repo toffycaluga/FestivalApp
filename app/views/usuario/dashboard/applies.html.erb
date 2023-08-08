@@ -6,7 +6,7 @@
   <% @applies.each do |apply| %>
     <%= render 'applies/data_apply', apply: apply %>
     <p>
-      <%= link_to "Show this apply", festival_apply_path(apply.festival, apply)%>
+      <%= link_to "Ver esta Postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary"%>
     </p>
   <% end %>
 </div>

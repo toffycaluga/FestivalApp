@@ -27,10 +27,15 @@ class AppliesController < ApplicationController
     @festival = Festival.find(params[:festival_id])
     @apply = @festival.applies.build
   end
-  1
+  
 
   # GET /applies/1/edit
   def edit
+    def edit
+      @festival = Festival.find(params[:festival_id]) # Asegúrate de definir @festival
+      @apply = @festival.applies.find(params[:id]) # 
+    end
+    
   end
 
   # POST /applies or /applies.json
@@ -40,7 +45,7 @@ class AppliesController < ApplicationController
     @apply.user = current_user
     respond_to do |format|
       if @apply.save
-        redirect_to request.fullpath, notice: 'Comentario creado correctamente.'
+        format.html { redirect_to root_path, notice: 'Comentario creado correctamente.' }
         format.json { render :show, status: :created, location: @apply }
       else
         format.html { render :new, status: :unprocessable_entity }

@@ -1,4 +1,4 @@
-<%= form_with(model: @festival.applies.build ,url: festival_applies_path(@festival)) do |form| %>
+<%= form_with(model: @apply, url: festival_apply_path(@festival, @apply), method: :patch) do |form| %>
   <% if apply.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(apply.errors.count, "error") %> prohibited this apply from being saved:</h2>
