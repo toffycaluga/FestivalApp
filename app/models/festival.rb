@@ -24,7 +24,7 @@ class Festival < ApplicationRecord
   belongs_to :user
 
   #Relaciones a muchos
-  has_many :applies
+  has_many :applies, dependent: :destroy
   
   # Relaciones a active storage
   has_one_attached :festival_logo

@@ -72,4 +72,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:name, :email, :phone_number, :avatar, :password, :password_confirmation)
   end
+  case resource.role
+  when 'Admin'
+    layout "admin_layout"
+  when 'Jurado'
+    jurado_dashboard_path
+  when 'Usuario'
+    layout "user_layout"
+  when 'Organizador'
+    organizador_dashboard_path
+  else
+    # Si el usuario no tiene un rol válido, puedes redirigirlo a alguna otra página, como la página de inicio.
+    root_path
+  end
 end

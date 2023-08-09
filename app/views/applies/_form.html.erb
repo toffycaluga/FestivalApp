@@ -34,32 +34,32 @@
   </div>
 </div>
   <div>
-    <%= form.label "Nombre Artistico o pseudonimo", style: "display: block", class:"form-label" %>
+    <%= form.label "Nombre Artistico o pseudonimo", style: "display: block", class:"form-label fw-bold" %>
     <%= form.text_field :name, autocomplete: true ,class:"form-control"  %>
-  </div>
+  </div><br>
 
   <div>
-    <%= form.label "Tipo de Actuación: Nombre de tu acto", style: "display: block", class:"form-label" %>
+    <%= form.label "Tipo de Actuación: Nombre de tu acto", style: "display: block", class:"form-label fw-bold" %>
     <%= form.text_field :act, class:"form-control"  %>
-  </div>
+  </div><br>
 
   <div>
-    <%= form.label "Háblanos de ti: Por favor, cuéntanos de manera breve sobre ti, tu acto y tu experiencia en el mundo artístico.", class:"form-label", style: "display: block" %>
+    <%= form.label "Háblanos de ti: Por favor, cuéntanos de manera breve sobre ti, tu acto y tu experiencia en el mundo artístico.", class:"form-label fw-bold", style: "display: block" %>
     <%= form.text_area :description , class:"form-control" %>
-  </div>
+  </div><br>
 
   <div>
-    <%= form.label "Video de tu acto (debe ser un enlace al video en YouTube)", class:"form-label", style: "display: block" %>
+    <%= form.label "Video de tu acto (debe ser un enlace al video en YouTube)", class:"form-label fw-bold", style: "display: block" %>
     <%= form.text_field :video_url , class:"form-control" %>
-  </div>
+  </div><br>
 
  <div>
-  <%= form.label :category_id, class:"form-label" , style: "display: block" %>
+  <%= form.label :category_id, class:"form-label fw-bold " , style: "display: block" %>
   <%= form.collection_select :category_id, Category.all, :id, :name,{ prompt: "Seleccionar categoría" }, { class: "form-select" }%>
 </div>
 
 
-  <div>
+  <div class="text-end mr-3 mt-3">
     <%= form.submit class:"btn btn-primary my-3 px-4"%>
   </div>
 <% end %>

@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   namespace :usuario do
     get 'dashboard', to: 'dashboard#index'
     get 'dashboard/applies', to: 'dashboard#applies'
+    get "user/profile/:name", to: 'dashboard#profile', as: :user_profile
+
   
   end
 

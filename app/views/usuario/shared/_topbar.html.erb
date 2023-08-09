@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar  navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -101,7 +101,7 @@
     
         <div class="topbar-divider d-none d-sm-block"></div>
 <!-- Default dropstart button -->
-    <div class=" btn-group dropstart">
+    <div class=" btn-group dropdown">
         <button type="button" class="nav-link btn btn-transparent  no-arrow dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
             <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=current_user.name%></span>
                 <% if current_user.avatar.present? %>
@@ -114,18 +114,21 @@
 
 
         <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
-            <li><button class="dropdown-item" type="button"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Activity Log</button></li>
-            <li><button class="dropdown-item" type="button">
+            <!--<li><button class="dropdown-item" type="button"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                        Activity Log</button></li>-->
+            <li><%= link_to  usuario_user_profile_path(current_user.name) ,class:"dropdown-item" do%>
+               
                 
                         <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                        Profile
+                        Perfil
                     
-            </button></li>
+                    <% end %>
+                    
+            </li>
             <li>
                 <%= button_to  destroy_user_session_path, method: :delete, class:"dropdown-item" do %>
                 <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                Cerrar
+                Cerrar Sesión
 
                 
                 <% end %>

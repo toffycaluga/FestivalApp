@@ -34,9 +34,9 @@
   </div>
 </div>
   <div>
-    <%= form.label "Nombre Artistico o pseudonimo", style: "display: block", class:"form-label" %>
+    <%= form.label "Nombre Artistico o pseudonimo", style: "display: block", class:"form-label f-1" %>
     <%= form.text_field :name, autocomplete: true ,class:"form-control"  %>
-  </div>
+  </div><br>
 
   <div>
     <%= form.label "Tipo de Actuación: Nombre de tu acto", style: "display: block", class:"form-label" %>
@@ -59,8 +59,8 @@
 </div>
 
 
-  <div>
-    <%= form.submit class:"btn btn-primary my-3 px-4"%>
+  <div class="text-end">
+    <%= form.submit class:"btn btn-primary my-3 px-4 "%>
   </div>
 <% end %>
 

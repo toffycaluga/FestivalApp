@@ -26,12 +26,14 @@
               <%# topbar  %>
               <%= render 'usuario/shared/topbar' %>
               <%# Begin Page Content %>
-                <p class="notice"><%= notice %></p>
-                <p class="alert"><%= alert %></p>
+                <p class="notice  text-success "><%= notice %></p>
+                <p class="alert text-danger"><%= alert %></p>
+                
                 <main class="container">
                   <%= yield %>
                 </main>
           </div>
+          <%# end content %>
       </div>
     </div>
     
