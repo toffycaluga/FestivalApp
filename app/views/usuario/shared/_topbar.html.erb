@@ -2,9 +2,9 @@
 <nav class="navbar  navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
-    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+    <%# <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
         <i class="fa fa-bars"></i>
-    </button>
+    </button> %>
 
     <%# <!-- Topbar Search -->
     <form
@@ -18,11 +18,19 @@
                 </button>
             </div>
         </div>
-    </form> %>
+    </form> %> <!-- Sidebar - Brand -->
+            <%= link_to  root_path, class:"navbar-brand d-flex align-items-center justify-content-center" do %>
+                <div class="sidebar-brand-icon ">
+                    <%= image_tag 'circo.png' ,style:"width:50px;", class:"ml-3 text-black"%>
+                    <%# <i class="fa-solid fa-tent"></i> %>
+                </div>    
+                <div class="mr-2 d-none d-lg-inline text-gray-600 nav-link">Festivapp</div>
+            
+            <% end %>
 
     <!-- Topbar Navbar -->
     <ul class="navbar-nav ml-auto">
-
+<%# 
         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
         <li class="nav-item dropdown no-arrow d-sm-none">
             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button"
@@ -45,9 +53,27 @@
                     </div>
                 </form>
             </div>
+        </li> %>
+
+        <li class="nav-item active">
+                <%= link_to  root_path, class:"nav-link" do %>
+                    <%# <i class="fas fa-fw fa-tachometer-alt"></i> %>
+                    <span class="text-gray-600">Home</span>
+                <% end %>
         </li>
 
-        <!-- Nav Item - Alerts -->
+
+
+         <li class="nav-item">
+                <%= link_to   usuario_dashboard_applies_path, class:"nav-link collapsed" do %>
+                    <%# <i class="fas fa-fw fa-cog"></i> %>
+                    <span class="text-gray-600"> Mis postulaciones</span>
+                
+                <% end %>
+                
+                
+            </li>
+        <%# <!-- Nav Item - Alerts -->
         <li class="nav-item dropdown no-arrow mx-1">
             <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button"
                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +122,7 @@
                 </a>
                 <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
             </div>
-        </li>
+        </li> %>
 
     
         <div class="topbar-divider d-none d-sm-block"></div>

@@ -3,7 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
-
+  layout 'user_layout'
   # GET /resource/sign_up
   # def new
   #   super
@@ -23,9 +23,10 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   # GET /resource/edit
-  # def edit
-  #   super
-  # end
+  def edit
+
+    super
+  end
 
   # PUT /resource
   # def update
@@ -72,17 +73,5 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def user_params
     params.require(:user).permit(:name, :email, :phone_number, :avatar, :password, :password_confirmation)
   end
-  case resource.role
-  when 'Admin'
-    layout "admin_layout"
-  when 'Jurado'
-    jurado_dashboard_path
-  when 'Usuario'
-    layout "user_layout"
-  when 'Organizador'
-    organizador_dashboard_path
-  else
-    # Si el usuario no tiene un rol válido, puedes redirigirlo a alguna otra página, como la página de inicio.
-    root_path
-  end
+  
 end

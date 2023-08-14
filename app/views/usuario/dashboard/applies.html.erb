@@ -9,10 +9,13 @@
   
   <% if @applies.present? %>
     <% @applies.each do |apply| %>
-      <%= render 'applies/data_apply', apply: apply %>
-      <p>
-        <%= link_to "Ver esta Postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary"%>
-      </p>
+    <div id="festivals" class="col-xl-4 col-md-6 mb-6">
+
+      <%= render 'applies/apply_detail', apply: apply %>
+      <div class="text-end">
+        <%= link_to "Ver esta Postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary text-end"%>
+      </div>
+    </div>
     <% end %>
   <% else %>
     <strong>Aún no has postulado a ningún festival</strong>

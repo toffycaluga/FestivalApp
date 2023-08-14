@@ -9,10 +9,10 @@
         
         <% if @festivals %>
             <% @festivals.each do |festival| %>
-                <div id="festivals" class="col-xl-3 col-md-6 mb-6">
+                <div id="festivals" class="col-xl-4 col-md-6 mb-6">
                     <%= render "festivals/festival",festival:festival %>
                     <p>
-                    <%= link_to "Show this festival", festival %>
+                    <%#= link_to "Show this festival", festival %>
                     </p>
                 </div>
             <% end %>

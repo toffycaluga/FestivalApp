@@ -19,7 +19,7 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
     get 'dashboard/applies', to: 'dashboard#applies'
     get "user/profile/:name", to: 'dashboard#profile', as: :user_profile
-
+    get 'user/edit/profile/:name', to: 'dashboard#edit', as: :user_profile_edit
   
   end
 
