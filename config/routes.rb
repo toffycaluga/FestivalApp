@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   }
   namespace :admin do
     get 'dashboard', to: 'dashboard#index'
+    resources :festivals do
+      put :close_applications
+      put :close_festival
+    end
 
   end
 

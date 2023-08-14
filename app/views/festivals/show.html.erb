@@ -1,5 +1,18 @@
 <p style="color: green"><%= notice %></p>
+<% if current_user.role == "Admin" %>
 
+<div class="card-header">
+  <div class="row g-0">
+    <div class="col">
+      <%= button_to "Cerrar Postulaciones", admin_festival_close_applications_path(@festival), method: :put, class: "btn btn-danger" %>
+    </div>
+    <div class="col">
+      <%= button_to "Cerrar Festival", admin_festival_close_festival_path(@festival), method: :put, class: "btn btn-danger px-4" %>
+
+    </div>
+  </div>
+</div>
+<% end %>
 <%= render @festival %>
 
 <div>

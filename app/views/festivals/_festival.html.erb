@@ -1,5 +1,7 @@
 
 <div class="card mb-3" style="max-width: 840px;">
+
+
   <div class="row g-0">
     <div class="col-md-4" >
         
@@ -27,8 +29,14 @@
           <% if current_user.role == "Admin" %>
             <%= link_to "Show this festival", festival, class:"btn btn-primary p-2" %>
           <% elsif current_user.role == "Usuario"%>
-            <%= link_to 'Postular', new_festival_apply_path(festival), class:"btn btn-primary p-2" %>
-
+          
+            <% if festival.application_state? %>
+              
+            
+              <%= link_to 'Postular', new_festival_apply_path(festival), class:"btn btn-primary p-2" %>
+            <% else %>
+              <P>Las Postulaciones ya cerraron</P>
+            <% end %>
           <% end %>
           
 
