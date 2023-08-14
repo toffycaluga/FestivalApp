@@ -11,18 +11,26 @@
     </div>
     <div class="col-md-8">
       <div class="card-body">
-        <h5 class="card-title text-bold">Nombre :<%= apply.user.name %> 
+        <h5 class="card-title fw-bold">Festival :<%= apply.festival.name %> 
         </h5>
         <p>
+            <strong>Nombre : </strong><br>
+            <span> <%= apply.user.name%></span>
+
+        </p>
+        <p>
             <strong>Nombre artistico: </strong>
+            <br>
             <span> <%= apply.name%></span>
 
         </p>
         <p>
-            <strong>Categoria:</strong><span><%= apply.category.name%></span> 
+            <strong>Categoria:</strong><br>
+            <span><%= apply.category.name%></span> 
         </p>
         <p>
-            <strong>Acto:</strong><span><%= apply.act%></span> 
+            <strong>Acto:</strong><br>
+            <span><%= apply.act%></span> 
         </p>
         <p class="card-text"> 
           <strong>

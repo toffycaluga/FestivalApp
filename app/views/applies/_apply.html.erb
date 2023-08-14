@@ -2,11 +2,15 @@
 <div id="<%= dom_id apply %>">
 <div class="card">
     
-    <div class="fluid justify-content-center d-flex align-items-center">
-      <p class="flex-grow-1">Postulación: <%= @apply.festival.name %></p>
+    <div class="fluid justify-content-end d-flex align-items-center">
+     
       
+     
+     <% if current_user.id == @apply.user.id %>
       
      <%= render 'applies/buttons_apply', apply: @apply %>
+     <% end %>
+      
     </div>
 
     <%= render 'applies/data_apply', apply: apply %>
@@ -14,10 +18,12 @@
     
   </div>
   <iframe src="http://www.youtube.com/embed/<%= @video_id%>" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen class="embed-responsive-item" height="360px"></iframe>
-  <div class="card-footer">
-
-    <a href="#" class="btn btn-primary">Calificar</a>
-  </div>
+  
+  <% if current_user.role == "Organizador" || current_user.role == "Admin" %>
+    <div class="card-footer">
+      <a href="#" class="btn btn-primary">Calificar</a>
+    </div>
+  <% end %>
 </div>
 
 
