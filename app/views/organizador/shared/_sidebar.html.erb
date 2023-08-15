@@ -26,7 +26,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Mis festivales
+                Mis festival
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -34,7 +34,7 @@
                 <%= link_to  festivals_path, class:"nav-link collapsed" do %>
                 
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Festivales</span>
+                    <span>Postulaciones</span>
                 
                 
                 <% end %>
@@ -42,47 +42,16 @@
                 
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <%= link_to  new_festival_path , class:"nav-link colapsed" do%>
-                
-                    <i class="fa-solid fa-plus"></i>
-                    <span>Nuevo Festival</span>
-                
-                <% end %>
-                
-            </li>
+           <br><br><br><br><br><br><br><br><br>
 
-            <!-- Divider -->
-            <hr class="sidebar-divider">
-
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Personal
-            </div>
-
-            <!-- Nav Item - organizadores -->
-            <li class="nav-item">
-                <%= link_to new_admin_festival_organizer_path, class:"nav-link collapsed" do%>
-                
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Asignar Organiadores</span>
-                <%end%>
-            </li>
-            <li class="nav-item">
-                <%= link_to assign_organizers_admin_festivals_path, class:"nav-link collapsed" do%>
-                
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Ver Organiadores</span>
-                <%end%>
-            </li>
+            
 
      
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block mb-5">
 
             <!-- Sidebar Toggler (Sidebar) -->
-            <div class="text-center d-none d-md-inline">
+            <div class="text-center d-none d-md-inline mt-5">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
             </div>
 

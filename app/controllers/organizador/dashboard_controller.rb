@@ -6,7 +6,11 @@ class Organizador::DashboardController < ApplicationController
     
     if @festival_organizer
       @festival = @festival_organizer.festival
+      @total_postulaciones = Apply.where(festival_id: @festival.id).count
+
+      @postulaciones_por_categoria = Apply.where(festival_id: @festival.id).group(:category_id).count
     end
+    
     # @user = current_user
     # @organized_festivals = @user.organized_festivals
 
