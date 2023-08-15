@@ -30,6 +30,7 @@ class Festival < ApplicationRecord
   has_many :organizerships
   has_many :organizers, through: :organizerships, source: :user
   has_many :admin_festival_organizers, class_name: 'Admin::FestivalOrganizer'
+  
   has_many :festival_organizers, through: :admin_festival_organizers, source: :user
 
 

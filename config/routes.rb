@@ -40,6 +40,7 @@ Rails.application.routes.draw do
 
   namespace :organizador do
     get 'dashboard', to: 'dashboard#index'
+    get 'dashboard/applies', to: 'dashboard#applies'
   end
   # Definir la ruta root según el rol del usuario
   root 'home#dashboard_redirect'

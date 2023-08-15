@@ -1,5 +1,5 @@
 class Admin::FestivalsController < ApplicationController
-    before_action :set_festival, only: [:show, :edit, :update, :destroy, :close_festival,:close_applications,:process_assign_organizers]
+    before_action :set_festival, only: [:show, :edit, :update, :destroy,:process_assign_organizers]
     layout "admin_layout"
     def close_applications
         @festival = Festival.find(params[:festival_id])
@@ -10,9 +10,9 @@ class Admin::FestivalsController < ApplicationController
     def close_festival
         @festival = Festival.find(params[:festival_id])
         if @festival.update(state: false)
-          # Cambiar el rol de los organizadores a "usuario"
-          @festival.organizers.each do |organizer|
-            organizer.update(role: "usuario")
+          # Cambiar el rol de los organizadores a "Usuario"
+          @festival.admin_festival_organizers.each do |organizer|
+            organizer.user.update(role: "Usuario")
           end
       
           redirect_to admin_festival_path(@festival), notice: "Festival cerrado y roles de organizadores cambiados a usuarios."
@@ -25,7 +25,6 @@ class Admin::FestivalsController < ApplicationController
         @festivals = current_user.festivals.where(state: true)
     end
     def show
-      @festival = Festival.find(params[:festival_id])
     end
     
     def process_assign_organizers
@@ -46,7 +45,7 @@ class Admin::FestivalsController < ApplicationController
       private
     
       def set_festival
-        @festival = Festival.find(params[:festival_id])
+        @festival = Festival.find(params[:id])
       end
   
      

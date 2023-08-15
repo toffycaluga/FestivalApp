@@ -36,3 +36,6 @@
     /* Aplicar filtro en escala de grises a la imagen */
     filter: grayscale(100%);
   }
+  .list-group .list-group-item {
+    border: none; /* Eliminar el borde de los elementos p */
+  }

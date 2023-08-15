@@ -1,11 +1,12 @@
 <div class="card mb-3 " style="max-width: 100%;">
       <div class="card-body">
         <div class="row g-0">
-          <div class="col-3">
-            <% if apply.festival.festival_logo.present? %>
-              <%= image_tag apply.festival.festival_logo, class:"img-fluid round w-100" ,id:"preview-logo" %> 
+          <div class="col-3" >
+            <% if apply.apply_image.present? %>
+              <%= image_tag apply.apply_image.variant(resize_to_fill: [50, 50]), class: "rounded", style: "max-width: 100px; max-height: 100px;" %>
+
             <% else %>
-              <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+              <%= image_tag 'image.png', class:"img-fluid rounded w-100"  %> 
             <% end %>
           </div>
           <div class="col-6 mt-4">

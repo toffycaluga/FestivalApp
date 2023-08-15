@@ -1,0 +1,33 @@
+<div class="card mb-3" style="max-width: 100%;">
+  <div class="list-group list-group-horizontal">
+    <div class="list-group-item" >
+        
+        <% if apply.apply_image.present? %>
+          <%= image_tag apply.apply_image.variant(resize_to_fill: [50, 50]) ,class:"img-profile rounded-circle"%>
+        <% else %>
+          <i class="fa-solid fa-circle-user img-profile rounded-circle"></i>
+        <% end %>
+    </div>
+        <p class="list-group-item">
+            <strong>Nombre : </strong><br>
+            <span> <%= apply.user.name%></span>
+
+        </p>
+        <p class="list-group-item">
+            <strong>Nombre artistico: </strong>
+            <br>
+            <span> <%= apply.name%></span>
+
+        </p>
+        <p class="list-group-item">
+            <strong>Categoria:</strong><br>
+            <span><%= apply.category.name%></span> 
+        </p>
+        <p class="list-group-item">
+            <strong>Acto:</strong><br>
+            <span><%= apply.act%></span> 
+        </p>
+        
+      </div>
+ 
+</div>

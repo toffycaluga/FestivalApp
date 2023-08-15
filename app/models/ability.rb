@@ -22,6 +22,11 @@ class Ability
       end
        
     when 'Organizador'
+      can :manage , Festival
+      can :new, Apply
+
+      can :read, Apply 
+       
       # Definir las habilidades del organizador aquí
     else
       # Por defecto, los usuarios no autenticados pueden ver la página de inicio de sesión.
