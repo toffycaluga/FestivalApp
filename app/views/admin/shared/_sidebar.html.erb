@@ -4,7 +4,8 @@
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
                 <div class="sidebar-brand-icon ">
-                    <i class="fa-solid fa-tent"></i>
+                     <%= image_tag 'logo_circo.png' ,style:"width:50px;", class:"ml-3"%>
+                    <%# <i class="fa-solid fa-tent"></i> %>
                 </div>
                 <div class="sidebar-brand-text mx-3">Festivapp<sup><%=current_user.role%></sup></div>
             </a>
@@ -14,9 +15,10 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="index.html">
+                <%= link_to  root_path, class:"nav-link" do %>
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                <% end %>
             </li>
 
             <!-- Divider -->
@@ -29,19 +31,26 @@
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
+                <%= link_to  festivals_path, class:"nav-link collapsed" do %>
+                
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Festivales</span>
-                </a>
+                
+                
+                <% end %>
+                
                 
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" >
+                <%= link_to  new_festival_path , class:"nav-link colapsed" do%>
+                
                     <i class="fa-solid fa-plus"></i>
                     <span>Nuevo Festival</span>
-                </a>
+                
+                <% end %>
+                
             </li>
 
             <!-- Divider -->
@@ -52,12 +61,20 @@
                 Personal
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - organizadores -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <%= link_to new_admin_festival_organizer_path, class:"nav-link collapsed" do%>
+                
                     <i class="fas fa-fw fa-folder"></i>
-                    <span>Organiadores</span>
-                </a>
+                    <span>Asignar Organiadores</span>
+                <%end%>
+            </li>
+            <li class="nav-item">
+                <%= link_to assign_organizers_admin_festivals_path, class:"nav-link collapsed" do%>
+                
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ver Organiadores</span>
+                <%end%>
             </li>
 
             <!-- Nav Item - Charts -->

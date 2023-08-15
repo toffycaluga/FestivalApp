@@ -1,0 +1,46 @@
+<div class="card mb-3 " style="max-width: 100%;">
+      <div class="card-body">
+        <div class="row g-0">
+          <div class="col-3" >
+            <% if apply.apply_image.present? %>
+              <%= image_tag apply.apply_image.variant(resize_to_fill: [50, 50]), class: "rounded", style: "max-width: 100px; max-height: 100px;" %>
+
+            <% else %>
+              <%= image_tag 'image.png', class:"img-fluid rounded w-100"  %> 
+            <% end %>
+          </div>
+          <div class="col-6 mt-4">
+            <strong class="card-title text-bold">Festival:
+            </strong>
+            <span>
+              <%= apply.festival.name %> 
+            </span>
+          </div>
+        </div>
+        <p>
+            <strong>Nombre : </strong><br>
+            <span> <%= apply.user.name %> </span>
+
+        </p>
+        <p>
+            <strong>Nombre artistico: </strong><br>
+            <span> <%= apply.name%></span>
+
+        </p>
+        <p>
+            <strong>Categoria:</strong><br>
+            <span><%= apply.category.name%></span> 
+        </p>
+        <p>
+            <strong>Acto:</strong><br>
+            <span><%= apply.act%></span> 
+        </p>
+        <p class="card-text"> 
+          <strong>
+          Sobre mi
+          </strong><br>
+          <%= apply.description%>
+        </p>
+         <p class="text-muted text-end fs-6">Fecha de Postulacion: <br><%= apply.created_at.strftime("%d de %B de %Y") %></p>
+      </div>
+</div>

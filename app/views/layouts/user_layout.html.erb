@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FestivApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <%= javascript_include_tag "https://youtubeembeddedplayer.googleapis.com/api/js?key=#{ ENV['yt_apikey'] }&libraries=places&callback=dispatchMapsEvent",
+    async: true,
+    defer: true,
+    "data-turbolinks-eval": false %>
+  </head>
+
+  <body id="page-top">
+    <div id="wrapper">
+      <%# sidebar %>
+      <%#= render 'usuario/shared/sidebar' %>
+      <%#  Content Wrapper%>
+      <div id="content-wrapper" class="d-flex flex-column">
+          <%# main content %>
+          <div id="content">
+              <%# topbar  %>
+              <%= render 'usuario/shared/topbar' %>
+              <%# Begin Page Content %>
+                <p class="notice  text-success "><%= notice %></p>
+                <p class="alert text-danger"><%= alert %></p>
+                
+                <main class="container " >
+                  <%= yield %>
+                </main>
+                <%= render 'shared/footer' %>
+          </div>
+          <%# end content %>
+      </div>
+    </div>
+    
+
+
+      <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js" integrity="sha512-0QbL0ph8Tc8g5bLhfVzSqxe9GERORsKhIn1IrpxDAgUsbBGz/V7iSav2zzW325XGd1OMLdL4UiqRJj702IeqnQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <script src="https://kit.fontawesome.com/166fe20303.js" crossorigin="anonymous"></script>
+       <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
+        integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
+        crossorigin="anonymous"></script>
+      <!-- script sidebar-->
+      <script>
+        document.addEventListener("DOMContentLoaded", function() {
+          var collapseElementList = [].slice.call(document.querySelectorAll('.collapse'));
+          var collapseList = collapseElementList.map(function(collapseEl) {
+            return new bootstrap.Collapse(collapseEl);
+          });
+
+          // Toggle the side navigation
+          var sidebarToggle = document.getElementById("sidebarToggle");
+          var sidebarToggleTop = document.getElementById("sidebarToggleTop");
+          var body = document.body;
+          var sidebar = document.querySelector(".sidebar");
+
+          sidebarToggle.addEventListener("click", function(e) {
+            body.classList.toggle("sidebar-toggled");
+            sidebar.classList.toggle("toggled");
+            if (sidebar.classList.contains("toggled")) {
+              var collapseElements = sidebar.querySelectorAll(".collapse");
+              collapseElements.forEach(function(collapseEl) {
+                var collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+                if (collapseInstance) {
+                  collapseInstance.hide();
+                }
+              });
+            }
+          });
+
+          sidebarToggleTop.addEventListener("click", function(e) {
+            body.classList.toggle("sidebar-toggled");
+            sidebar.classList.toggle("toggled");
+            if (sidebar.classList.contains("toggled")) {
+              var collapseElements = sidebar.querySelectorAll(".collapse");
+              collapseElements.forEach(function(collapseEl) {
+                var collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+                if (collapseInstance) {
+                  collapseInstance.hide();
+                }
+              });
+            }
+          });
+
+          // Close any open menu accordions when window is resized below 768px
+          window.addEventListener("resize", function() {
+            if (window.innerWidth < 768) {
+              var collapseElements = sidebar.querySelectorAll(".collapse");
+              collapseElements.forEach(function(collapseEl) {
+                var collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+                if (collapseInstance) {
+                  collapseInstance.hide();
+                }
+              });
+            }
+
+            // Toggle the side navigation when window is resized below 480px
+            if (window.innerWidth < 480 && !sidebar.classList.contains("toggled")) {
+              body.classList.add("sidebar-toggled");
+              sidebar.classList.add("toggled");
+              var collapseElements = sidebar.querySelectorAll(".collapse");
+              collapseElements.forEach(function(collapseEl) {
+                var collapseInstance = bootstrap.Collapse.getInstance(collapseEl);
+                if (collapseInstance) {
+                  collapseInstance.hide();
+                }
+              });
+            }
+          });
+
+       
+
+          // Scroll to top button appear
+          window.addEventListener("scroll", function() {
+            var scrollDistance = window.scrollY;
+            var scrollToTopButton = document.querySelector(".scroll-to-top");
+            if (scrollDistance > 100) {
+              scrollToTopButton.style.display = "block";
+            } else {
+              scrollToTopButton.style.display = "none";
+            }
+          });
+
+          // Smooth scrolling using JavaScript easing
+          var scrollToTopLinks = document.querySelectorAll('a.scroll-to-top');
+          scrollToTopLinks.forEach(function(link) {
+            link.addEventListener("click", function(e) {
+              e.preventDefault();
+              var targetElement = document.querySelector(link.getAttribute("href"));
+              var offsetTop = targetElement.getBoundingClientRect().top + window.scrollY;
+              var startTime = performance.now();
+
+              var scroll = function(currentTime) {
+                var timeElapsed = currentTime - startTime;
+                var progress = Math.min(timeElapsed / 1000, 1);
+                var easeProgress = 0.5 - 0.5 * Math.cos(progress * Math.PI);
+
+                window.scrollTo(0, easeProgress * offsetTop);
+
+                if (timeElapsed < 1000) {
+                  requestAnimationFrame(scroll);
+                }
+              };
+
+              requestAnimationFrame(scroll);
+            });
+          });
+        });
+      </script>
+
+
+
+        
+  </body>
+</html>

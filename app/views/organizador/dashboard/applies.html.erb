@@ -1,0 +1,17 @@
+<!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Postulaciónes a Festival</h1>
+    <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+</div>
+<div id="applies">
+  
+  <% @festival.applies.each do |apply| %>
+    <%= render 'applies/data_apply_org', apply: apply %>
+    <p class="text-end">
+      <%= link_to "Ver la postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary"%>
+    </p>
+
+  <% end %>
+</div>
+

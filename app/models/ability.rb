@@ -14,7 +14,19 @@ class Ability
       # can :read, Submission
     when 'Usuario'
       # Definir las habilidades del usuario aquí
+      can :read , Festival
+      can :new, Apply
+
+      can :manage, Apply do |apply|
+        user.id == apply.user_id
+      end
+       
     when 'Organizador'
+      can :manage , Festival
+      can :new, Apply
+
+      can :read, Apply 
+       
       # Definir las habilidades del organizador aquí
     else
       # Por defecto, los usuarios no autenticados pueden ver la página de inicio de sesión.

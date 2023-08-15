@@ -80,3 +80,7 @@ gem "annotate", "~> 3.2"
 gem "figaro", "~> 1.2"
 
 gem "mini_magick", "~> 4.12"
+
+gem 'aws-sdk-s3'
+
+gem 'youtube-embed', '~> 1.0'

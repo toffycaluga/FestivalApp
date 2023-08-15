@@ -4,3 +4,6 @@
 import "@hotwired/turbo-rails"
 
 import "controllers"
+import "./yt_player.js"
+import "youtube_embed"
+import "./controllers/delete_confirmation.js"

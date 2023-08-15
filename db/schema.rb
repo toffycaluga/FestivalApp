@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_30_131629) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_15_002843) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -42,6 +42,49 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_131629) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "admin_festival_organizers", force: :cascade do |t|
+    t.bigint "festival_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["festival_id"], name: "index_admin_festival_organizers_on_festival_id"
+    t.index ["user_id"], name: "index_admin_festival_organizers_on_user_id"
+  end
+
+  create_table "applies", force: :cascade do |t|
+    t.string "name"
+    t.string "act"
+    t.text "description"
+    t.string "video_url"
+    t.bigint "festival_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "category_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["category_id"], name: "index_applies_on_category_id"
+    t.index ["festival_id"], name: "index_applies_on_festival_id"
+    t.index ["user_id"], name: "index_applies_on_user_id"
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "festivals", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "year", null: false
+    t.boolean "state", default: true
+    t.boolean "application_state", default: true
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
+    t.string "country"
+    t.index ["user_id"], name: "index_festivals_on_user_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -57,10 +100,17 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_30_131629) do
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
+    t.boolean "superadmin", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "admin_festival_organizers", "festivals"
+  add_foreign_key "admin_festival_organizers", "users"
+  add_foreign_key "applies", "categories"
+  add_foreign_key "applies", "festivals"
+  add_foreign_key "applies", "users"
+  add_foreign_key "festivals", "users"
 end

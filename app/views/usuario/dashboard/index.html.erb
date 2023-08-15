@@ -1,1 +1,26 @@
-<h2>esta es la vista del Usuario</h2>
+ <!-- Page Heading -->
+<div class="d-sm-flex align-items-center justify-content-between mb-4">
+    <h1 class="h3 mb-0 text-gray-800">Festivals</h1>
+    <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+</div>
+                    <!-- Content Row -->
+<div class="row">
+        
+        <% if @festivals %>
+            <% @festivals.each do |festival| %>
+                <div id="festivals" class="col-xl-4 col-md-6 mb-6">
+                    <%= render "festivals/festival",festival:festival %>
+                    <p>
+                    <%#= link_to "Show this festival", festival %>
+                    </p>
+                </div>
+            <% end %>
+        <% else %>
+                <p class="fs-1">Por el momento no hay festivales disponibles</p>
+
+        <% end %>
+    </div>
+
+ 
+   
