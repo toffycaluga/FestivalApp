@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Festival organizers</h1>
+
+<div id="admin_festival_organizers">
+  <% @admin_festival_organizers.each do |admin_festival_organizer| %>
+    <%= render admin_festival_organizer %>
+    <p>
+      <%= link_to "Show this festival organizer", admin_festival_organizer %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New festival organizer", new_admin_festival_organizer_path %>

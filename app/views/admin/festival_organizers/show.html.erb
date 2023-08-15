@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @admin_festival_organizer %>
+
+<div>
+  <%= link_to "Edit this festival organizer", edit_admin_festival_organizer_path(@admin_festival_organizer) %> |
+  <%= link_to "Back to festival organizers", admin_festival_organizers_path %>
+
+  <%= button_to "Destroy this festival organizer", @admin_festival_organizer, method: :delete %>
+</div>

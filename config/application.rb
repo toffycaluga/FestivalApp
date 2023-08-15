@@ -18,5 +18,10 @@ module FestivalApp
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+     # Cargar las variables de entorno de figaro
+     config.before_configuration do
+      Figaro.load
+    end
+    config.i18n.default_locale = :es
   end
 end

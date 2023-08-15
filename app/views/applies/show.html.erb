@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+<div class="my-5">
+  
+  <% if current_user.role== "Organizador" %>
+    <%= link_to "Volver a las postulaciones", organizador_dashboard_applies_path %><br>
+  <% else %>
+    <%= link_to "Volver a mis postulaciones", festival_applies_path %><br>
+  <% end %>
+  
+</div>
+<%= render @apply %>
+
+
+

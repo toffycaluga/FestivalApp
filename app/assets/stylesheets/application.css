@@ -13,3 +13,29 @@
  *= require_tree .
  *= require_self
  */
+ .avatar{
+    width: 50px;
+
+
+}
+
+.avatar-preview-img {
+    max-width: 200px;
+    max-height: 200px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    margin-top: 10px;
+  }
+
+  .card.closed {
+    /* Aplicar efecto de apagado */
+    opacity: 0.5;
+  }
+  
+  .card.closed img {
+    /* Aplicar filtro en escala de grises a la imagen */
+    filter: grayscale(100%);
+  }
+  .list-group .list-group-item {
+    border: none; /* Eliminar el borde de los elementos p */
+  }

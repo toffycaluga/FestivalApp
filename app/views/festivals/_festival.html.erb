@@ -1,0 +1,47 @@
+
+<div class="card mb-3 <%= festival.state ? '' : 'closed' %>" style="max-width: 840px;">
+
+
+  <div class="row g-0">
+    <div class="col-md-4" >
+        
+        <% if festival.festival_logo.present? %>
+          <%= image_tag festival.festival_logo, class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% else %>
+          <%= image_tag 'image.png', class:"img-fluid rounded w-100" ,id:"preview-logo" %> 
+        <% end %>
+        
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <strong>Festival:</strong>
+        <h5 class="card-title"><%= festival.name %> 
+        <small><%= festival.year%></small>
+        </h5>
+        <p class="card-text"> 
+          <strong>
+          Postulaciones:
+          </strong>
+          <%= festival.application_state ? 'abiertas' : 'cerradas'%>
+        </p>
+        <div class="card-footer text-end bg-white ">
+          
+          <% if current_user.role == "Admin" %>
+            <%= link_to "Show this festival", festival, class:"btn btn-primary p-2" %>
+          <% elsif current_user.role == "Usuario"%>
+          
+            <% if festival.application_state? %>
+              
+            
+              <%= link_to 'Postular', new_festival_apply_path(festival), class:"btn btn-primary p-2" %>
+            <% else %>
+              <P>Las Postulaciones ya cerraron</P>
+            <% end %>
+          <% end %>
+          
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

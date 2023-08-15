@@ -1,0 +1,64 @@
+   <!-- Sidebar -->
+        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
+            <!-- Sidebar - Brand -->
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+                <div class="sidebar-brand-icon ">
+                     <%= image_tag 'logo_circo.png' ,style:"width:50px;", class:"ml-3"%>
+                    <%# <i class="fa-solid fa-tent"></i> %>
+                </div>
+                <div class="sidebar-brand-text mx-3">Festivapp</div>
+            </a>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item active">
+                <%= link_to  root_path, class:"nav-link" do %>
+                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <span>Dashboard</span>
+                <% end %>
+            </li>
+
+            <!-- Divider -->
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Mis festival
+            </div>
+
+            <!-- Nav Item - Pages Collapse Menu -->
+            <li class="nav-item">
+                <%= link_to  organizador_dashboard_applies_path, class:"nav-link collapsed" do %>
+                
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Postulaciones</span>
+                
+                
+                <% end %>
+                
+                
+            </li>
+
+           <br><br><br><br><br><br><br><br><br>
+
+            
+
+     
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block mb-5">
+
+            <!-- Sidebar Toggler (Sidebar) -->
+            <div class="text-center d-none d-md-inline mt-5">
+                <button class="rounded-circle border-0" id="sidebarToggle"></button>
+            </div>
+
+            <!-- Sidebar Message -->
+            
+
+        </ul>
+        <!-- End of Sidebar -->
+
+       

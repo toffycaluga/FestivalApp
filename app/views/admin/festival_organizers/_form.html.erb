@@ -1,0 +1,59 @@
+<%= form_with(model: admin_festival_organizer) do |form| %>
+  <% if admin_festival_organizer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_festival_organizer.errors.count, "error") %> prohibited this admin_festival_organizer from being saved:</h2>
+
+      <ul>
+        <% admin_festival_organizer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+
+  <div>
+    <%= form.label :festival_id, style: "display: block" %>
+    <%= form.collection_select :festival_id, Festival.all.where(state: true), :id, :name, { prompt: 'Select festival' }, { class: 'form-select' } %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <input type="text" id="myInput" placeholder="Buscar organizadores...">
+    <%= form.collection_select :user_id, User.all, :id, :email, { prompt: 'Select organizer' }, { class: 'form-select' ,id: 'mySelect'} %>
+  </div>
+
+  <div class="text-end">
+    <%= form.submit class:"btn btn-primary my-2", value:"Asignar Organizador" %>
+  </div>
+<% end %>
+
+
+
+<script>
+// Obtener el campo de entrada y el menú desplegable
+var input = document.getElementById('myInput');
+var select = document.getElementById('mySelect');
+
+// Agregar un controlador de eventos para el evento keyup en el campo de entrada
+input.addEventListener('keyup', function() {
+  // Obtener el valor del campo de entrada y convertirlo a mayúsculas
+  var filter = input.value.toUpperCase();
+  // console.log(filter)
+  // Obtener todas las opciones del menú desplegable
+  var options = select.getElementsByTagName('option');
+
+  // Recorrer todas las opciones del menú desplegable
+  for (var i = 0; i < options.length; i++) {
+    // Obtener el texto de la opción actual
+    var txtValue = options[i].textContent || options[i].innerText;
+
+    // Si el texto de la opción coincide con el filtro, mostrar la opción, de lo contrario, ocultarla
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      options[i].style.display = '';
+    } else {
+      options[i].style.display = 'none';
+    }
+  }
+});
+</script>

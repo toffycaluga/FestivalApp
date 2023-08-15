@@ -1,0 +1,23 @@
+/* Estilos para el contenedor del perfil */
+.profile-container {
+    width: 50px; /* Ancho del contenedor */
+    height: 50px; /* Altura del contenedor */
+    border-radius: 50%; /* Hace que el contenedor sea circular */
+    overflow: hidden; /* Oculta cualquier contenido que se desborde del círculo */
+    background-color: #f0f0f0; /* Color de fondo si la imagen no se carga o no existe */
+  }
+  
+  /* Estilos para el avatar (imagen de perfil) */
+  .avatar-container {
+    width: 100%;
+    height: 100%;
+    background-size:auto; /* Ajusta la imagen de fondo para llenar completamente el contenedor */
+    background-position: center; /* Centra la imagen de fondo */
+  }
+  
+  /* Estilos opcionales para agregar un borde alrededor del avatar */
+  .avatar-container {
+    border: 2px solid #ffffff; /* Color del borde */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Sombra para resaltar el avatar */
+  }
+  
