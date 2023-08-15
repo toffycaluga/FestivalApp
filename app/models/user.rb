@@ -41,6 +41,9 @@ class User < ApplicationRecord
   has_many :organizerships
   has_many :organized_festivals, through: :organizerships, source: :festival
 
+  has_many :admin_festival_organizers
+  has_many :organized_festivals, through: :admin_festival_organizers, source: :festival
+
 
 
 end

@@ -9,8 +9,16 @@ class Admin::FestivalsController < ApplicationController
 
     def close_festival
         @festival = Festival.find(params[:festival_id])
-        @festival.update(state: false)
-        redirect_to admin_festival_path(@festival), notice: "Festival cerrado"
+        if @festival.update(state: false)
+          # Cambiar el rol de los organizadores a "usuario"
+          @festival.organizers.each do |organizer|
+            organizer.update(role: "usuario")
+          end
+      
+          redirect_to admin_festival_path(@festival), notice: "Festival cerrado y roles de organizadores cambiados a usuarios."
+        else
+          redirect_to admin_festival_path(@festival), alert: "Error al cerrar el festival."
+        end
     end
     
     def assign_organizers

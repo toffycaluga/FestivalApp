@@ -1,6 +1,6 @@
 class Admin::FestivalOrganizersController < ApplicationController
   before_action :set_admin_festival_organizer, only: %i[ show edit update destroy ]
-
+  layout "admin_layout"
   # GET /admin/festival_organizers or /admin/festival_organizers.json
   def index
     @admin_festival_organizers = Admin::FestivalOrganizer.all
@@ -21,10 +21,12 @@ class Admin::FestivalOrganizersController < ApplicationController
 
   # POST /admin/festival_organizers or /admin/festival_organizers.json
   def create
-    @admin_festival_organizer = Admin::FestivalOrganizer.new(admin_festival_organizer_params)
+    @festival = Festival.find(admin_festival_organizer_params[:festival_id])
+    @admin_festival_organizer = @festival.admin_festival_organizers.build(admin_festival_organizer_params.except(:festival_id))
 
     respond_to do |format|
       if @admin_festival_organizer.save
+        @admin_festival_organizer.user.update(role: "Organizador")
         format.html { redirect_to admin_festival_organizer_url(@admin_festival_organizer), notice: "Festival organizer was successfully created." }
         format.json { render :show, status: :created, location: @admin_festival_organizer }
       else

@@ -7,10 +7,10 @@
 #   Character.create(name: "Luke", movie: movies.first)
 # Crear un usuario administrador
 admin_user = User.create!(
-    name: "Nombre del Admin",
+    name: "Abraham Lillo",
     phone_number: "123456789",
-    email: "admin@example.com",
-    password: "password", # Cambia esta contraseña por una segura
+    email: "p.abraham.lillo@gmail.com",
+    password: "password", 
     role: "Admin"
   )
 

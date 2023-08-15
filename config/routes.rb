@@ -8,12 +8,11 @@ Rails.application.routes.draw do
   }
   namespace :admin do
    
-    resources :festival_organizers
     get 'dashboard', to: 'dashboard#index'
     resources :festivals do
       get 'assign_organizers', on: :collection
-    post 'assign_organizers', on: :collection, to: 'festivals#process_assign_organizers'
- 
+      post 'assign_organizers', on: :collection, to: 'festivals#process_assign_organizers'
+      
       member do
         post 'assign_organizers', to: 'festivals#assign_organizers'
       end
@@ -23,7 +22,8 @@ Rails.application.routes.draw do
       put :close_applications
       put :close_festival
     end
-
+    resources :festival_organizers
+    
   end
 
   namespace :jurado do
