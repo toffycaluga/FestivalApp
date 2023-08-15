@@ -61,12 +61,20 @@
                 Personal
             </div>
 
-            <!-- Nav Item - Pages Collapse Menu -->
+            <!-- Nav Item - organizadores -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#">
+                <%= link_to assign_organizers_admin_festivals_path, class:"nav-link collapsed" do%>
+                
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Organiadores</span>
-                </a>
+                <%end%>
+            </li>
+            <li class="nav-item">
+                <%= link_to assign_organizers_admin_festivals_path, class:"nav-link collapsed" do%>
+                
+                    <i class="fas fa-fw fa-folder"></i>
+                    <span>Ver Organiadores</span>
+                <%end%>
             </li>
 
             <!-- Nav Item - Charts -->

@@ -26,3 +26,13 @@
     border-radius: 50%;
     margin-top: 10px;
   }
+
+  .card.closed {
+    /* Aplicar efecto de apagado */
+    opacity: 0.5;
+  }
+  
+  .card.closed img {
+    /* Aplicar filtro en escala de grises a la imagen */
+    filter: grayscale(100%);
+  }

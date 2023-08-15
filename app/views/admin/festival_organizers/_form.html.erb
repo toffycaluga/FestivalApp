@@ -1,0 +1,27 @@
+<%= form_with(model: admin_festival_organizer) do |form| %>
+  <% if admin_festival_organizer.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(admin_festival_organizer.errors.count, "error") %> prohibited this admin_festival_organizer from being saved:</h2>
+
+      <ul>
+        <% admin_festival_organizer.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :festival_id, style: "display: block" %>
+    <%= form.text_field :festival_id %>
+  </div>
+
+  <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.text_field :user_id %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+<% end %>

@@ -38,4 +38,9 @@ class User < ApplicationRecord
   #Relacionnes a muchos 
   has_many :festivals, dependent: :destroy
   has_many :applies , dependent: :destroy
+  has_many :organizerships
+  has_many :organized_festivals, through: :organizerships, source: :festival
+
+
+
 end

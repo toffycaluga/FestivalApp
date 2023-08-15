@@ -7,8 +7,19 @@ Rails.application.routes.draw do
     sessions: 'users/sessions'
   }
   namespace :admin do
+   
+    resources :festival_organizers
     get 'dashboard', to: 'dashboard#index'
     resources :festivals do
+      get 'assign_organizers', on: :collection
+    post 'assign_organizers', on: :collection, to: 'festivals#process_assign_organizers'
+ 
+      member do
+        post 'assign_organizers', to: 'festivals#assign_organizers'
+      end
+      collection do
+        get 'assign_organizers' # Define la ruta para la acción assign_organizers
+      end
       put :close_applications
       put :close_festival
     end
