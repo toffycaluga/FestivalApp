@@ -11,7 +11,8 @@ admin_user = User.create!(
     phone_number: "123456789",
     email: "p.abraham.lillo@gmail.com",
     password: "password", 
-    role: "Admin"
+    role: "Admin",
+    superadmin:true
   )
 
   
