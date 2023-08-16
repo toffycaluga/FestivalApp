@@ -39,3 +39,15 @@
   .list-group .list-group-item {
     border: none; /* Eliminar el borde de los elementos p */
   }
+
+  .navbar-usercolor{
+    background: #782c91;
+    /* background: #079b9e; */
+  }
+  .text-info-600{
+    color: aliceblue;
+    font-weight: 600;
+  }
+  .festival-active{
+    background: #FFD700;
+  }
