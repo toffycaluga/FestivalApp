@@ -1,5 +1,5 @@
 <!-- Topbar -->
-<nav class="navbar  navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+<nav class="navbar navbar-usercolor navbar-expand navbar-light  topbar mb-4 static-top shadow">
 
     <!-- Sidebar Toggle (Topbar) -->
     <%# <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -21,10 +21,10 @@
     </form> %> <!-- Sidebar - Brand -->
             <%= link_to  root_path, class:"navbar-brand d-flex align-items-center justify-content-center" do %>
                 <div class="sidebar-brand-icon ">
-                    <%= image_tag 'circo.png' ,style:"width:50px;", class:"ml-3 text-black"%>
+                    <%= image_tag 'logo_circo.png' ,style:"width:50px;", class:"ml-3 text-black"%>
                     <%# <i class="fa-solid fa-tent"></i> %>
                 </div>    
-                <div class="mr-2 d-none d-lg-inline text-gray-600 nav-link">FestivApp</div>
+                <div class="mr-2 d-none d-lg-inline  text-info-600 ">FestivApp</div>
             
             <% end %>
 
@@ -58,7 +58,7 @@
         <li class="nav-item active">
                 <%= link_to  root_path, class:"nav-link" do %>
                     <%# <i class="fas fa-fw fa-tachometer-alt"></i> %>
-                    <span class="text-gray-600">Home</span>
+                    <span class="text-info-600">Home</span>
                 <% end %>
         </li>
 
@@ -67,7 +67,7 @@
          <li class="nav-item">
                 <%= link_to   usuario_dashboard_applies_path, class:"nav-link collapsed" do %>
                     <%# <i class="fas fa-fw fa-cog"></i> %>
-                    <span class="text-gray-600"> Mis postulaciones</span>
+                    <span class="text-info-600"> Mis postulaciones</span>
                 
                 <% end %>
                 
@@ -129,7 +129,7 @@
 <!-- Default dropstart button -->
     <div class=" btn-group dropdown">
         <button type="button" class="nav-link btn btn-transparent  no-arrow dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><%=current_user.name%></span>
+            <span class="mr-2 d-none d-lg-inline text-info-600 small"><%=current_user.name%></span>
                 <% if current_user.avatar.present? %>
                             <%= image_tag current_user.avatar.variant(resize_to_fill: [50, 50]) ,class:"img-profile rounded-circle"%>
                 <% else %>
