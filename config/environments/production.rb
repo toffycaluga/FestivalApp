@@ -89,20 +89,23 @@ Rails.application.configure do
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
-
+  
+  config.action_mailer.default_url_options = { host: 'festivappcircus.com', protocol: 'http' }  
+  config.action_mailer.default_options = {
+    from: 'FestivApp Circus <no-reply@FestivAppCircus.com>'
+  }
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :user_name => ENV['mailtrap_user_name'],
   :password => ENV['mailtrap_password'],
-  domain: 'festivappcircus.com',
+  :domain => 'festivappcircus.com',
   :address => ENV['mailtrap_addres'],
   :host => ENV['mailtrap_host'],
   :port => ENV['mailtrap_port'],
   authentication: 'plain',
   enable_starttls_auto: true
-}
-config.action_mailer.default_options = {
-  from: 'FestivApp Circus <no-reply@FestivAppCircus.com>'
-}
+  }
+
+ 
 end
