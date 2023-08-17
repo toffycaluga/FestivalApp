@@ -47,7 +47,7 @@ class AppliesController < ApplicationController
       if @apply.save
         format.html { redirect_to root_path, notice: 'Postulación creada correctamente.' }
         format.json { render :show, status: :created, location: @apply }
-        # UserMailer.confirmation_email(current_user, @festival).deliver_now
+        UserMailer.confirmation_email(current_user, @festival).deliver_now
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @apply.errors, status: :unprocessable_entity }

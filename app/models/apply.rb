@@ -15,6 +15,10 @@
 #
 class Apply < ApplicationRecord
    
+  validates :name, presence: true
+  validates :act, presence: true
+  validates :description, presence: true
+  validates :category_id, presence: true
   # youtube_embed :video_url, {:with_description => true, :width => 450, :height => 300}
   #  Relaciones
   belongs_to :festival
