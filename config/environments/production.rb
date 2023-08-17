@@ -72,6 +72,8 @@ Rails.application.configure do
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
 
+ 
+
   # Don't log any deprecations.
   config.active_support.report_deprecations = false
 
@@ -100,7 +102,9 @@ Rails.application.configure do
   :host => ENV['mailtrap_host'],
   :port => ENV['mailtrap_port'],
   :authentication => :cram_md5,
-  from: 'no-reply@festivappcircus.com'
 
+}
+config.action_mailer.default_options = {
+  from: 'FestivApp Circus <no-reply@FestivAppCircus.com>'
 }
 end

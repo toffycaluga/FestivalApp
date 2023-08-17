@@ -1,4 +1,12 @@
-<h1>Confirmación de Postulación</h1>
-<p>Hola <%= @user.name %>,</p>
-<p>Te has postulado exitosamente al festival "<%= @festival.name %>  <%= @festival.year%>".</p>
-<p>¡Esperamos que tengas una excelente presentación!</p>
+
+  <div class="container">
+    <div class="header">
+      <h1 class="title">Confirmación de Postulación</h1>
+    </div>
+    <div class="content">
+      <p>Hola <%= @user.name %>,</p>
+      <p>Te informamos que tu postulación al festival "<%= @festival.name %> <%= @festival.year %>" ha sido exitosa.</p>
+      <p>¡Estamos emocionados de verte en acción! Tu presentación está dentro del proceso de selección y serás notificado una vez que el proceso haya concluido.</p>
+      <p>Independientemente de si eres seleccionado o no, te deseamos mucho éxito y agradecemos tu participación en el certamen.</p>
+    </div>
+  </div>
