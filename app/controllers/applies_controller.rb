@@ -47,7 +47,13 @@ class AppliesController < ApplicationController
       if @apply.save
         format.html { redirect_to root_path, notice: 'Postulación creada correctamente.' }
         format.json { render :show, status: :created, location: @apply }
+        #Confirmacion de postulación 
         UserMailer.confirmation_email(current_user, @festival).deliver_now
+        # Envío de mensaje a los organizadores
+        organizers = User.where(role: 'Organizador')
+        organizers.each do |organizer|
+          OrganizerMailer.new_application_notification(organizer, @apply).deliver_now
+        end
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @apply.errors, status: :unprocessable_entity }
