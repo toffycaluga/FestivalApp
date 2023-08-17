@@ -45,6 +45,7 @@ class AppliesController < ApplicationController
     @apply.user = current_user
     respond_to do |format|
       if @apply.save
+   
         format.html { redirect_to root_path, notice: 'Postulación creada correctamente.' }
         format.json { render :show, status: :created, location: @apply }
         #Confirmacion de postulación 

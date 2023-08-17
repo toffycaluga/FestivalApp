@@ -1,3 +1,5 @@
+
+
 <h2>Iniciar Sesion</h2>
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
@@ -28,3 +30,18 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+<script>
+  var loginForm = document.querySelector('#new_user');
+var submitButton = document.querySelector('input[type="submit"]');
+
+// Agregar un controlador de eventos para el envío del formulario
+loginForm.addEventListener('submit', function(event) {
+  // Mostrar el loader
+  var loader = document.querySelector('#loader');
+  loader.style.display = 'block';
+
+  // Deshabilitar el botón de envío para evitar múltiples envíos
+  submitButton.disabled = true;
+});
+</script>
