@@ -90,14 +90,12 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  # Do not dump schema after migrations.
-  config.action_mailer.default_url_options = { host: 'festivappcircus.com' }
-
   config.active_record.dump_schema_after_migration = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
   :user_name => ENV['mailtrap_user_name'],
   :password => ENV['mailtrap_password'],
+  domain: 'festivappcircus.com',
   :address => ENV['mailtrap_addres'],
   :host => ENV['mailtrap_host'],
   :port => ENV['mailtrap_port'],
