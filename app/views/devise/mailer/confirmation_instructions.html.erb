@@ -5,5 +5,9 @@
 
 <p>Bienvenido <%= @email %>!</p>
 
-<p>Puedes confirmar tu correo electrónico de la cuenta a través del siguiente enlace:</p>
+
+<p>Te damos la bienvenida a FestivApp, la plataforma para explorar y participar en increíbles festivales de todo el mundo.</p>
+<p>Para empezar a disfrutar de todas las funciones de FestivApp, necesitamos confirmar tu dirección de correo electrónico.</p>
+<p>Puedes confirmar tu correo electrónico de la cuenta a través del siguiente botons:</p>
+
 <p><%= link_to 'Confirmar mi cuenta', confirmation_url(@resource, confirmation_token: @token), style: 'display: inline-block; padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; border-radius: 4px; text-decoration: none; border: none;' %></p>

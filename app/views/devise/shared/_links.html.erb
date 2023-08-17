@@ -17,11 +17,11 @@
 <% end %>
 
 <%- if devise_mapping.confirmable? && controller_name != 'confirmations' %>
-  <%= link_to "¿No recibiste las instrucciones de confirmación?", new_confirmation_path(resource_name),class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1" %><br />
+  <%= link_to "¿No recibes las instrucciones de confirmación?", new_confirmation_path(resource_name),class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1" %><br />
 <% end %>
 
 <%- if devise_mapping.lockable? && resource_class.unlock_strategy_enabled?(:email) && controller_name != 'unlocks' %>
-  <%= link_to "¿No recibí las instrucciones de desbloqueo?", new_unlock_path(resource_name),class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1" %><br />
+  <%= link_to "¿Aun no recibes las instrucciones de desbloqueo?", new_unlock_path(resource_name),class:"link-secondary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover mx-1" %><br />
 <% end %>
 
 <%- if devise_mapping.omniauthable? %>

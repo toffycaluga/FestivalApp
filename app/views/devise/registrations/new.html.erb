@@ -49,7 +49,7 @@
   <div class="field form-outline mb-4 text-start fw-bold">
     <%= f.label "contraseña", class:"form-label"%>
     <% if @minimum_password_length %>
-    <em>(<% @minimum_password_length %> caracteres minimos)</em>
+    <em>(<%= @minimum_password_length %> caracteres minimos)</em>
     <% end %><br />
     <%= f.password_field :password, autocomplete: "new-password",class:"form-control" %>
   </div>
