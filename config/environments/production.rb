@@ -99,8 +99,8 @@ Rails.application.configure do
   :address => ENV['mailtrap_addres'],
   :host => ENV['mailtrap_host'],
   :port => ENV['mailtrap_port'],
-  :authentication => :cram_md5,
-
+  authentication: 'plain',
+  enable_starttls_auto: true
 }
 config.action_mailer.default_options = {
   from: 'FestivApp Circus <no-reply@FestivAppCircus.com>'
