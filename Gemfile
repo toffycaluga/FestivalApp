@@ -84,3 +84,5 @@ gem "mini_magick", "~> 4.12"
 gem 'aws-sdk-s3'
 
 gem 'youtube-embed', '~> 1.0'
+
+gem 'loading_screen', git: 'https://github.com/Mujadded/loading_screen.git'

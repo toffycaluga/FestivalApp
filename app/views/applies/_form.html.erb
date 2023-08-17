@@ -1,4 +1,11 @@
-<%= form_with(model: @festival.applies.build ,url: festival_applies_path(@festival)) do |form| %>
+<div id="loader" style="display: none;">
+    <h3>  Cargando...</h3>
+    <%= render 'shared/loading_screen' %>
+</div>
+
+
+
+<%= form_with(model: @festival.applies.build,id:"new_apply" ,url: festival_applies_path(@festival)) do |form| %>
   <% if apply.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(apply.errors.count, "error") %> prohibited this apply from being saved:</h2>
@@ -64,6 +71,8 @@
   </div>
 <% end %>
 
+
+
 <script>
   document.addEventListener('DOMContentLoaded', function() {
     var input = document.getElementById('festival_festival_logo');
@@ -81,5 +90,20 @@
         previewImage.src = '/assets/image.png';
       }
     });
+  });
+  
+</script>
+<script>
+  var loginForm = document.querySelector('#new_apply');
+  var submitButton = document.querySelector('input[type="submit"]');
+
+  // Agregar un controlador de eventos para el envío del formulario
+  loginForm.addEventListener('submit', function(event) {
+    // Mostrar el loader
+    var loader = document.querySelector('#loader');
+    loader.style.display = 'block';
+
+    // Deshabilitar el botón de envío para evitar múltiples envíos
+    submitButton.disabled = true;
   });
 </script>
