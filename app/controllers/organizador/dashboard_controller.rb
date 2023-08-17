@@ -17,6 +17,7 @@ class Organizador::DashboardController < ApplicationController
 
   end
   def applies
+    response.headers['X-Content-Type-Options'] = 'nosniff'
     @user = current_user
     @festival_organizer = Admin::FestivalOrganizer.find_by(user_id: @user.id)
     if @festival_organizer

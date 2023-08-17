@@ -14,6 +14,7 @@ class AppliesController < ApplicationController
 
   # GET /applies/1 or /applies/1.json
   def show
+    response.headers['X-Content-Type-Options'] = 'nosniff'
     @apply.category = Category.find(@apply.category_id)
   
     if @apply.video_url.present?
