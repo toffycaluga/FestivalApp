@@ -90,7 +90,7 @@ Rails.application.configure do
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
   
-  config.action_mailer.default_url_options = { host: 'festivappcircus.com', protocol: 'http' }  
+  config.action_mailer.default_url_options = { host: 'festivapp-b85984842b30.herokuapp.com', protocol: 'https' }  
   config.action_mailer.default_options = {
     from: 'FestivApp Circus <no-reply@FestivAppCircus.com>'
   }
