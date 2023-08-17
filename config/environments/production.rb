@@ -102,7 +102,7 @@ Rails.application.configure do
   :domain => 'festivappcircus.com',
   :address => ENV['mailtrap_addres'],
   :host => ENV['mailtrap_host'],
-  :port => ENV['mailtrap_port'],
+  :port => '587',
   authentication: 'plain',
   enable_starttls_auto: true
   }
