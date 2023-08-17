@@ -100,9 +100,10 @@ Rails.application.configure do
   :user_name => ENV['mailtrap_user_name'],
   :password => ENV['mailtrap_password'],
   :domain => 'festivappcircus.com',
-  :address => ENV['mailtrap_addres'],
+  :address => ENV['mailtrap_address'],
   :host => ENV['mailtrap_host'],
   :port => '587',
+  :authentication => :cram_md5,
   authentication: 'plain',
   enable_starttls_auto: true
   }
