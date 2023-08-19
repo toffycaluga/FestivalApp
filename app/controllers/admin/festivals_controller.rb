@@ -1,4 +1,5 @@
 class Admin::FestivalsController < ApplicationController
+    before_action :authenticate_user!
     before_action :set_festival, only: [:show, :edit, :update, :destroy,:process_assign_organizers]
     layout "admin_layout"
     def close_applications

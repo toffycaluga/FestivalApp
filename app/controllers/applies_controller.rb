@@ -1,5 +1,6 @@
 require 'youtube_embed'
 class AppliesController < ApplicationController
+  before_action :authenticate_user!
   layout :set_layout
   before_action :set_apply, only: %i[ show edit update destroy ]
 

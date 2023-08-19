@@ -1,4 +1,5 @@
 class Organizador::DashboardController < ApplicationController
+  before_action :authenticate_user!
   layout "organizador_layout"  
   def index
     @user = current_user
