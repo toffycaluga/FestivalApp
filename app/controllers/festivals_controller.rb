@@ -1,4 +1,5 @@
 class FestivalsController < ApplicationController
+  before_action :authenticate_user!
   layout :set_layout
   before_action :set_festival, only: %i[ show edit update destroy ]
   load_and_authorize_resource

@@ -1,4 +1,5 @@
 class Admin::FestivalOrganizersController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_admin_festival_organizer, only: %i[ show edit update destroy ]
   layout "admin_layout"
   # GET /admin/festival_organizers or /admin/festival_organizers.json
