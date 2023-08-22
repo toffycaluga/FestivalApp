@@ -118,14 +118,16 @@ class AppliesController < ApplicationController
     def extract_youtube_video_id(url)
       if url.include?("youtube.com") || url.include?("youtu.be")
         uri = URI.parse(url)
-        if uri.query
+        
+        if uri.host == "youtu.be"  # Si es un enlace de tipo youtu.be
+          return uri.path[1..-1]   # Ignoramos el primer carácter ("/") en la ruta
+        elsif uri.query            # Si es un enlace de tipo youtube.com con parámetros en la query
           query_params = URI.decode_www_form(uri.query)
           video_id_param = query_params.find { |param| param[0] == "v" }
           return video_id_param[1] if video_id_param
-        else
-          return uri.path.split("/").last
         end
       end
-      nil
-    end    
+      
+      nil  # Si no es un enlace de YouTube válido
+    end
 end

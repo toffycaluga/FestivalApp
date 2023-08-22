@@ -86,3 +86,5 @@ gem 'aws-sdk-s3'
 gem 'youtube-embed', '~> 1.0'
 
 gem 'loading_screen', git: 'https://github.com/Mujadded/loading_screen.git'
+
+gem 'rack-cors', require: 'rack/cors'
