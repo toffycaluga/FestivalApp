@@ -79,7 +79,7 @@ class FestivalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def festival_params
-      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country)
+      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country, :terms_and_conditions)
     end
     def set_layout
       case current_user.role
