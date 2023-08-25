@@ -117,7 +117,8 @@ class AppliesController < ApplicationController
     end
     def extract_youtube_video_id(url)
       if url.include?("youtube.com") || url.include?("youtu.be")
-        uri = URI.parse(url)
+        cleaned_url = url.strip  # Esto eliminará cualquier espacio en blanco al principio y al final de la cadena
+        uri = URI.parse(cleaned_url)
         
         if uri.host == "youtu.be"  # Si es un enlace de tipo youtu.be
           return uri.path[1..-1]   # Ignoramos el primer carácter ("/") en la ruta
