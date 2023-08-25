@@ -16,7 +16,11 @@
 <%= render @festival %>
 
 
+<div>
+    <p> boton para enviar confirmacion de terminos y condiciones </p>
+   <%= link_to "Enviar notificación de términos", send_terms_notification_festival_path(@festival), method: :post, class: "btn btn-primary" %>
 
+</div> 
 
 <div>
   <%= link_to "Edit this festival", edit_festival_path(@festival) %> |
