@@ -1,5 +1,7 @@
 require 'youtube_embed'
 class AppliesController < ApplicationController
+  include Pagy::Backend 
+  
   before_action :authenticate_user!
   layout :set_layout
   before_action :set_apply, only: %i[ show edit update destroy ]
@@ -7,9 +9,10 @@ class AppliesController < ApplicationController
   # GET /applies or /applies.json
   def index
     if current_user.role == "Usuario"
-      @applies = current_user.applies
+      @pagy, @applies = pagy(current_user.applies, items: 10) 
     elsif current_user.role == "Admin" || current_user.role == "Organizador"
-    @applies = Apply.all
+      @pagy, @applies = pagy( Apply.all, items: 10) 
+   
     end
   end
 

@@ -6,12 +6,23 @@
 </div>
 <div id="applies">
   
-  <% @festival.applies.each do |apply| %>
+  <% @applies.each do |apply| %>
+  <div class="card mb-3 bg-<%= apply.terms_and_conditions_accepted ? "succsess" : "danger" %>" style="max-width: 100%;">
     <%= render 'applies/data_apply_org', apply: apply %>
+  <div class="d-flex justify-content-between">
+    <p class="text-white">
+      <%= apply.terms_and_conditions_accepted ? "Acepto terminos y condiciones" : "aun no acepta terminos y condiciones" %>
+    </p>
     <p class="text-end">
       <%= link_to "Ver la postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary"%>
     </p>
-
+  </div>  
+  
+  </div>
   <% end %>
 </div>
+  <div class="p-2 m-5 d-flex justify-content-center">
+
+    <%== pagy_nav(@pagy) %>
+  </div>
 

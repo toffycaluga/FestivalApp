@@ -1,4 +1,5 @@
 class Organizador::DashboardController < ApplicationController
+  include Pagy::Backend
   before_action :authenticate_user!
   layout "organizador_layout"  
   def index
@@ -23,7 +24,8 @@ class Organizador::DashboardController < ApplicationController
     @festival_organizer = Admin::FestivalOrganizer.find_by(user_id: @user.id)
     if @festival_organizer
       @festival = @festival_organizer.festival
-       end
+      @pagy ,@applies= pagy(@festival.applies, items: 10)
+    end
   end
   private
     # Use callbacks to share common setup or constraints between actions.
