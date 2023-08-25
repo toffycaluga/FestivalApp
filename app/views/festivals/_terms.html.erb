@@ -7,7 +7,7 @@
         <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
       </div>
       <div class="modal-body">
-          <% terms_lines = @festival.terms_and_conditions.split("\n") %>
+          <% terms_lines = @apply.festival.terms_and_conditions.split("\n") %>
             <% terms_lines.each do |line| %>
             <% if line.match?(/^\d+\./) %>
                 <p><strong><%= line %></strong></p>

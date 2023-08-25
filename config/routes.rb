@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     resources :applies
     member do
       get 'terms', to: 'festivals#terms'
+      get 'send_terms_notification'
     end
   end
   get 'home/index'

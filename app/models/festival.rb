@@ -2,16 +2,17 @@
 #
 # Table name: festivals
 #
-#  id                :bigint           not null, primary key
-#  name              :string           not null
-#  year              :integer          not null
-#  state             :boolean          default(TRUE)
-#  application_state :boolean          default(TRUE)
-#  user_id           :bigint           not null
-#  created_at        :datetime         not null
-#  updated_at        :datetime         not null
-#  description       :text
-#  country           :string
+#  id                   :bigint           not null, primary key
+#  name                 :string           not null
+#  year                 :integer          not null
+#  state                :boolean          default(TRUE)
+#  application_state    :boolean          default(TRUE)
+#  user_id              :bigint           not null
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#  description          :text
+#  country              :string
+#  terms_and_conditions :text             default("Términos y condiciones por defecto.")
 #
 class Festival < ApplicationRecord
   # validaciones

@@ -32,14 +32,13 @@ class AppliesController < ApplicationController
   
 
   # GET /applies/1/edit
-  def edit
-    def edit
-      @festival = Festival.find(params[:festival_id]) # Asegúrate de definir @festival
-      @apply = @festival.applies.find(params[:id]) # 
-    end
-    
-  end
 
+  def edit
+    # @festival = Festival.find(params[:festival_id]) # Asegúrate de definir @festival
+    # @apply = Apply.find(params[:id]) # 
+  end
+  
+ 
   # POST /applies or /applies.json
   def create
     @festival = Festival.find(params[:festival_id])
@@ -66,9 +65,10 @@ class AppliesController < ApplicationController
 
   # PATCH/PUT /applies/1 or /applies/1.json
   def update
+    puts params[:apply][:terms_and_conditions_accepted]
     respond_to do |format|
       if @apply.update(apply_params)
-        format.html { redirect_to festival_apply_path(@apply), notice: "Apply was successfully updated." }
+        format.html { redirect_to root_path, notice: "Postulación actualizada con exito." }
         format.json { render :show, status: :ok, location: @apply }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -95,7 +95,7 @@ class AppliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def apply_params
-      params.require(:apply).permit(:name,:apply_image, :act, :description, :video_url, :festival_id, :user_id, :category_id)
+      params.require(:apply).permit(:name,:apply_image, :act, :description, :video_url, :festival_id, :user_id, :category_id,:terms_and_conditions_accepted)
     end
     def set_layout
       case current_user.role
