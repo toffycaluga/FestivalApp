@@ -36,6 +36,19 @@ class FestivalsController < ApplicationController
       end
     end
   end
+  # envio de correos para aceptar terminos y condiciones 
+
+  def send_terms_notification
+    @festival = Festival.find(params[:id])
+    @applications_without_accepted_terms = @festival.applies.where(terms_and_conditions_accepted: false)
+
+    @applications_without_accepted_terms.each do |application|
+      # Enviar correo a cada aplicación pendiente de aceptación
+      UserMailer.terms_notification_email(application, application.user, @festival).deliver_now
+    end
+
+    redirect_to root_path, notice: "Se ha enviado una notificación para aceptar los términos y condiciones."
+  end
 
   # PATCH/PUT /festivals/1 or /festivals/1.json
   def update
@@ -59,6 +72,10 @@ class FestivalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def terms
+    @festival = Festival.find(params[:id])
+  end
+
   def close_applications
     @festival = Festival.find(params[:id])
     @festival.update(application_state: false)
@@ -79,7 +96,7 @@ class FestivalsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def festival_params
-      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country)
+      params.require(:festival).permit(:name, :year, :state, :application_state, :user_id,:festival_logo, :description, :country, :terms_and_conditions)
     end
     def set_layout
       case current_user.role

@@ -32,14 +32,13 @@ class AppliesController < ApplicationController
   
 
   # GET /applies/1/edit
-  def edit
-    def edit
-      @festival = Festival.find(params[:festival_id]) # Asegúrate de definir @festival
-      @apply = @festival.applies.find(params[:id]) # 
-    end
-    
-  end
 
+  def edit
+    # @festival = Festival.find(params[:festival_id]) # Asegúrate de definir @festival
+    # @apply = Apply.find(params[:id]) # 
+  end
+  
+ 
   # POST /applies or /applies.json
   def create
     @festival = Festival.find(params[:festival_id])
@@ -66,9 +65,10 @@ class AppliesController < ApplicationController
 
   # PATCH/PUT /applies/1 or /applies/1.json
   def update
+    puts params[:apply][:terms_and_conditions_accepted]
     respond_to do |format|
       if @apply.update(apply_params)
-        format.html { redirect_to festival_apply_path(@apply), notice: "Apply was successfully updated." }
+        format.html { redirect_to root_path, notice: "Postulación actualizada con exito." }
         format.json { render :show, status: :ok, location: @apply }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -95,7 +95,7 @@ class AppliesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def apply_params
-      params.require(:apply).permit(:name,:apply_image, :act, :description, :video_url, :festival_id, :user_id, :category_id)
+      params.require(:apply).permit(:name,:apply_image, :act, :description, :video_url, :festival_id, :user_id, :category_id,:terms_and_conditions_accepted)
     end
     def set_layout
       case current_user.role
@@ -118,14 +118,16 @@ class AppliesController < ApplicationController
     def extract_youtube_video_id(url)
       if url.include?("youtube.com") || url.include?("youtu.be")
         uri = URI.parse(url)
-        if uri.query
+        
+        if uri.host == "youtu.be"  # Si es un enlace de tipo youtu.be
+          return uri.path[1..-1]   # Ignoramos el primer carácter ("/") en la ruta
+        elsif uri.query            # Si es un enlace de tipo youtube.com con parámetros en la query
           query_params = URI.decode_www_form(uri.query)
           video_id_param = query_params.find { |param| param[0] == "v" }
           return video_id_param[1] if video_id_param
-        else
-          return uri.path.split("/").last
         end
       end
-      nil
-    end    
+      
+      nil  # Si no es un enlace de YouTube válido
+    end
 end

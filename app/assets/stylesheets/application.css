@@ -52,3 +52,6 @@
   .festival-active{
     background: #FFD700;
   }
+  #terms-modal {
+    display: none;
+  }
