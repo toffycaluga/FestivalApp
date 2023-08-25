@@ -24,11 +24,6 @@ module FestivalApp
     end
     config.i18n.default_locale = :es
   end
-  config.middleware.insert_before 0, Rack::Cors do
-    allow do
-      origins 'https://festivappcircus.com' 
-      resource '*', headers: :any, methods: [:get, :post, :put, :patch, :delete, :options]
-    end
-  end
+  
   
 end
