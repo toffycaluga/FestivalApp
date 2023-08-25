@@ -1,0 +1,25 @@
+
+<div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Terminos y condiciones.</h5>
+        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close">X</button>
+      </div>
+      <div class="modal-body">
+          <% terms_lines = @festival.terms_and_conditions.split("\n") %>
+            <% terms_lines.each do |line| %>
+            <% if line.match?(/^\d+\./) %>
+                <p><strong><%= line %></strong></p>
+            <% else %>
+                <p><%= line.gsub(/\n/, '<br>').html_safe %></p>
+            <% end %>
+            <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        
+      </div>
+    </div>
+  </div>
+</div>

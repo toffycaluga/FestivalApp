@@ -19,6 +19,9 @@ class Apply < ApplicationRecord
   validates :act, presence: true
   validates :description, presence: true
   validates :category_id, presence: true
+  validates :terms_and_conditions_accepted, acceptance: { accept: true }
+  
+  
   # youtube_embed :video_url, {:with_description => true, :width => 450, :height => 300}
   #  Relaciones
   belongs_to :festival

@@ -59,6 +59,10 @@ class FestivalsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  def terms
+    @festival = Festival.find(params[:id])
+  end
+
   def close_applications
     @festival = Festival.find(params[:id])
     @festival.update(application_state: false)

@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   resources :festivals do
     resources :applies
+    member do
+      get 'terms', to: 'festivals#terms'
+    end
   end
   get 'home/index'
   devise_for :users, controllers: {
