@@ -10,35 +10,58 @@
     </div>
   <% end %>
 
-  <%= form.label "calificación", style: "display: block ", class: "form-label" %>
+   <%= form.label "Editar calificación", style: "display: block ", class: "form-label" %>
   <div class="d-flex justify-content-between">
-
-  <div class="star-rating">
-  <% (1..10).each do |i| %>
-    <input type="radio" id="star<%= i %>" name="rating[stars]" value="<%= i %>" class="star"/>
-    <label for="star<%= i %>"></label>
-  <% end %>
-</div>
+    
+    <div class="star-rating" id="star-rating" value="0">
+    <% (1..10).each do |i| %>
+      <span class="fa fa-star" name="rating[stars]" value="<%= i %>"></span>
+    <% end %>
+  </div>
+  <%= form.hidden_field :stars, value: 0 %>
 
     <%= form.submit 'calificar' ,class:"btn btn-primary"%>
   </div>
 <% end %>
 
 <script>
-
-document.addEventListener("DOMContentLoaded", function () {
-  const stars = document.querySelectorAll(".star");
+  document.addEventListener("DOMContentLoaded", function () {
+    const starRatingElement = document.getElementById("star-rating");
+  const stars = starRatingElement.querySelectorAll(".fa-star");
+  let ratingValue = parseInt(document.getElementById('star-rating').getAttribute('value'));
+  console.log(ratingValue);
+   updateStars(ratingValue);
 
   stars.forEach((star, index) => {
-    star.addEventListener("click", function () {
-      const selectedStarIndex = index+1;
-      console.log(selectedStarIndex)
-      stars.forEach((star, i) => {
-        star.checked = i == selectedStarIndex;
-      });
+    const starValue = index + 1;
 
+    star.addEventListener("click", function () {
+      console.log("estoy aqui");
+
+      ratingValue = starValue;
+      console.log(ratingValue);
+      updateStars(ratingValue);
     });
   });
+
+  function updateStars(ratingValue) {
+    stars.forEach((star, index) => {
+      const starValue = index + 1;
+      
+      if (starValue <= ratingValue) {
+        star.classList.add("checked");
+      } else {
+        star.classList.remove("checked");
+      }
+    });
+    // Actualiza el campo oculto con el valor seleccionado
+      document.getElementById('rating_stars').value =ratingValue;
+   
+  }
+
+ 
 });
+
+
 
 </script>
