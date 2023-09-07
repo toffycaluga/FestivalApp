@@ -41,4 +41,13 @@ class Festival < ApplicationRecord
   
   # Relaciones a active storage
   has_one_attached :festival_logo
+
+
+  def ranking
+    self.applies
+        .left_joins(:ratings)
+        .group('applies.id')
+        .select('applies.*, COALESCE(AVG(ratings.stars), 0) AS avg_stars')
+        .order('avg_stars DESC')
+  end
 end

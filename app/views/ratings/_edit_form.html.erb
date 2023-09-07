@@ -1,0 +1,67 @@
+
+<%= form_with(model: [@apply, @rating], url: apply_rating_path(@apply, @rating), method: :patch) do |form| %>
+ 
+
+  <% if form.object.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(form.object.errors.count, "error") %> prohibited this rating from being saved:</h2>
+      <ul>
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label "Editar calificación", style: "display: block ", class: "form-label" %>
+  <div class="d-flex justify-content-between">
+    
+    <div class="star-rating" id="star-rating" value="<%= @rating.stars %>">
+    <% (1..10).each do |i| %>
+      <span class="fa fa-star" name="rating[stars]" value="<%= i %>"></span>
+    <% end %>
+  </div>
+  <%= form.hidden_field :stars, value: @rating.stars %>
+
+    <%= form.submit 'calificar' ,class:"btn btn-primary"%>
+  </div>
+<% end %>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+  const starRatingElement = document.getElementById("star-rating");
+  const stars = starRatingElement.querySelectorAll(".fa-star");
+  let ratingValue = parseInt(document.getElementById('star-rating').getAttribute('value'));
+  console.log(ratingValue);
+   updateStars(ratingValue);
+
+  stars.forEach((star, index) => {
+    const starValue = index + 1;
+
+    star.addEventListener("click", function () {
+      ratingValue = starValue;
+      updateStars(ratingValue);
+    });
+  });
+
+  function updateStars(ratingValue) {
+    stars.forEach((star, index) => {
+      const starValue = index + 1;
+      
+      if (starValue <= ratingValue) {
+        star.classList.add("checked");
+      } else {
+        star.classList.remove("checked");
+      }
+    });
+    // Actualiza el campo oculto con el valor seleccionado
+      document.getElementById('rating_stars').value =ratingValue;
+   
+  }
+
+ 
+});
+
+
+
+</script>

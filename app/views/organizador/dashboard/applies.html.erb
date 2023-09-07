@@ -1,14 +1,16 @@
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Postulaciónes a Festival</h1>
-    <%# <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-            class="fas fa-download fa-sm text-white-50"></i> Generate Report</a> %>
+    
 </div>
 <div id="applies">
   
   <% @applies.each do |apply| %>
   <div class="card mb-3 bg-<%= apply.terms_and_conditions_accepted ? "success" : "danger" %>" style="max-width: 100%;">
     <%= render 'applies/data_apply_org', apply: apply %>
+    <%# Obtén la calificación del hash para esta postulación %>
+    <% rating_value = @ratings_hash[apply.id] || 0 %>
+    <%= render 'organizador/shared/calificacion', rating:rating_value %>
   <div class="d-flex justify-content-between">
     <p class="text-white">
       <%= apply.terms_and_conditions_accepted ? "Acepto terminos y condiciones" : "aun no acepta terminos y condiciones" %>
