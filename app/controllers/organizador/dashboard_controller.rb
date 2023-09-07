@@ -9,6 +9,10 @@ class Organizador::DashboardController < ApplicationController
     if @festival_organizer
       @festival = @festival_organizer.festival
       @total_postulaciones = Apply.where(festival_id: @festival.id).count
+      @total_calificadas = Rating.joins(apply: :festival)
+                         .where(festivals: { id: @festival.id })
+                         .where(ratings: { user_id: current_user.id })
+                         .count
 
       @postulaciones_por_categoria = Apply.where(festival_id: @festival.id).group(:category_id).count
     end

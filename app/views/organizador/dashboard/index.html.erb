@@ -8,7 +8,9 @@
   <h2><%= @festival.name %></h2>
   <p><%= @festival.description %></p>
 </div>
-    <%= render 'organizador/shared/card_metricas',text:"Total Postulaciones",count: @total_postulaciones, color:"success"%>  
+    <%= render 'organizador/shared/card_metricas',text:"Total Postulaciones",count: @total_postulaciones, color:"success"%> 
+     <%= render 'organizador/shared/card_postulaciones_revisadas',text:"Calificaciones hechas",total_calificadas: @total_calificadas, color:"warning",total_postulaciones:@total_postulaciones%> 
+     
 <div class="row">
 
 <h2>Total de Postulaciones por Categoría</h2>
