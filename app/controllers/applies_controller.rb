@@ -20,7 +20,14 @@ class AppliesController < ApplicationController
   def show
     response.headers['X-Content-Type-Options'] = 'nosniff'
     @apply.category = Category.find(@apply.category_id)
-  
+    @rating = Rating.find_by(user_id: current_user.id, apply_id: @apply.id)
+    if @rating
+      # Si se encontró la calificación, obtén la postulación asociada
+      @apply = @rating.apply
+    else
+      # Si no se encontró la calificación, verifica si la postulación existe
+      @apply = Apply.find_by(id: params[:id])
+    end
     if @apply.video_url.present?
       @video_id = extract_youtube_video_id(@apply.video_url)
     end

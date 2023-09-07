@@ -31,4 +31,8 @@ class Apply < ApplicationRecord
 
   # Relaciones a active storage
   has_one_attached :apply_image
+
+  #Relaciones a muchos 
+  has_many :ratings, dependent: :destroy #para recibir calificación en postulación
 end
+
