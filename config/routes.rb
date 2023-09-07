@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :applies do
+    resources :ratings, only: [:new, :create, :edit, :update]
+  end
+  resources :ratings
   resources :festivals do
     resources :applies
     member do

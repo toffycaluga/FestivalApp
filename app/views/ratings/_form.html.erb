@@ -1,0 +1,44 @@
+<%= form_with(model: @apply.ratings.build,id:"new_apply" ,url: apply_ratings_path(@apply)) do |form| %>
+  <% if form.object.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(form.object.errors.count, "error") %> prohibited this rating from being saved:</h2>
+      <ul>
+        <% form.object.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form.label "calificación", style: "display: block ", class: "form-label" %>
+  <div class="d-flex justify-content-between">
+
+  <div class="star-rating">
+  <% (1..10).each do |i| %>
+    <input type="radio" id="star<%= i %>" name="rating[stars]" value="<%= i %>" class="star"/>
+    <label for="star<%= i %>"></label>
+  <% end %>
+</div>
+
+    <%= form.submit 'calificar' ,class:"btn btn-primary"%>
+  </div>
+<% end %>
+
+<script>
+
+document.addEventListener("DOMContentLoaded", function () {
+  const stars = document.querySelectorAll(".star");
+
+  stars.forEach((star, index) => {
+    star.addEventListener("click", function () {
+      const selectedStarIndex = index+1;
+      console.log(selectedStarIndex)
+      stars.forEach((star, i) => {
+        star.checked = i == selectedStarIndex;
+      });
+
+    });
+  });
+});
+
+</script>

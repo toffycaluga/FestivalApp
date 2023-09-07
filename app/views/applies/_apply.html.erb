@@ -32,8 +32,13 @@
   
   <% if current_user.role == "Organizador" || current_user.role == "Admin" %>
     <div class="card-footer">
-      <a href="#" class="btn btn-primary">Calificar</a>
-    </div>
+      <% if @rating.present? %>
+        <%= render 'ratings/edit_form', apply: @apply, rating:@rating %>
+      <% else %>
+        <%= render 'ratings/form', apply: @apply %>
+      <% end %>
+
+      </div>
   <% end %>
   
 
