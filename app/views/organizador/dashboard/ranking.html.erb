@@ -1,0 +1,29 @@
+<!-- app/views/organizador/dashboard/ranking.html.erb -->
+
+<h1>Ranking de Postulaciones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>foto</th>
+      <th>Nombre</th>
+      <th>Promedio de Estrellas</th>
+      <th>Detalle</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @ranking_applies.each do |apply| %>
+      <tr>
+        <td>
+        <% if apply.apply_image.present? %>
+          <%= image_tag apply.apply_image.variant(resize_to_fill: [50, 50]) ,class:"img-profile rounded-circle"%>
+        <% else %>
+          <i class="fa-solid fa-circle-user img-profile rounded-circle"></i>
+        <% end %></td>
+        <td><%= apply.name %></td>
+        <td><%= apply.avg_stars %></td>
+        <td><%= link_to "Ver la postulación", festival_apply_path(apply.festival, apply), class:"btn btn-primary"%></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

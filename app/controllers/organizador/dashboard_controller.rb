@@ -38,6 +38,15 @@ class Organizador::DashboardController < ApplicationController
 
     end
   end
+  def ranking
+    @user = current_user
+    @festival_organizer = Admin::FestivalOrganizer.find_by(user_id: @user.id)
+    if @festival_organizer
+      @festival = @festival_organizer.festival
+    @ranking_applies = @festival.ranking
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_admin_festival_organizer
