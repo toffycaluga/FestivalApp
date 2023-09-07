@@ -1,3 +1,18 @@
 .checked {
   color: orange;
 }
+
+.rating {
+  display: flex;
+  align-items: center;
+  font-size: 24px;
+  color: #ffd900; /* Color de la estrella activa (amarillo en este ejemplo) */
+}
+
+.star {
+  margin-right: 5px; /* Espacio entre la estrella y la calificación */
+}
+
+.rating-value-bold {
+  font-weight: bold; /* Opcional: hace que la calificación sea más destacada */
+}

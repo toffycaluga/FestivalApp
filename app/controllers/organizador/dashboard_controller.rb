@@ -29,6 +29,13 @@ class Organizador::DashboardController < ApplicationController
     if @festival_organizer
       @festival = @festival_organizer.festival
       @pagy ,@applies= pagy(@festival.applies, items: 10)
+      
+    # Obtener todas las calificaciones del usuario actual para las postulaciones cargadas
+    @ratings = Rating.where(apply_id: @applies.pluck(:id), user_id: @user.id)
+    
+    # Crear un hash para mapear el rating de cada postulación
+    @ratings_hash = @ratings.group_by(&:apply_id).transform_values { |rating| rating.first.stars }
+
     end
   end
   private
