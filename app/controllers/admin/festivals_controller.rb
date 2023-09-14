@@ -70,7 +70,10 @@ class Admin::FestivalsController < ApplicationController
     def personas_que_quedaron
       @festival = Festival.find_by(state: true) # Obtener el festival activo basado en el atributo `state`
       if @festival
-        @personas_que_quedaron = @festival.applies.includes(:user).where(quedo_en_festival: true).map(&:user)
+        @personas_que_quedaron = @festival.applies
+                                  .where(quedo_en_festival: true)
+                                  .includes(:user)
+                                  
 
       else
         @personas_que_quedaron = [] # Si no hay festival activo, establecer la lista como vacía o manejar de acuerdo a tu lógica

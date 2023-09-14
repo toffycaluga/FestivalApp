@@ -1,11 +1,13 @@
 <!-- En app/views/admin/festivals/personas_que_quedaron.html.erb -->
 <h1>Personas que Quedaron en el Festival</h1>
 
-<table>
+<table class="table table-bordered border-primary">
   <thead>
     <tr>
       <th>Nombre</th>
       <th>Email</th>
+      <th>Nombre Artístico</th>
+      <th>acto</th>
       <th>telefono</th>
     </tr>
   </thead>
@@ -15,11 +17,13 @@
             
     
         
-        <% @personas_que_quedaron.each do |persona| %>
+        <% @personas_que_quedaron.each do |apply| %>
         <tr>
-            <td><%= persona.name %></td>
-            <td><%= persona.email %></td>
-            <td><%= persona.phone_number %></td>
+            <td><%= apply.user.name %></td>
+            <td><%= apply.user.email %></td>
+            <td><%= apply.name %></td>
+            <td><%= apply.act %></td>
+            <td><%= apply.user.phone_number %></td>
         </tr>
         
 
