@@ -80,6 +80,20 @@ class Admin::FestivalsController < ApplicationController
       end
     end   
     
+    def enviar_correo_a_participantes
+      @festival = Festival.find(params[:id])
+      @participantes = @festival.applies.where(quedo_en_festival: true).includes(:user).map(&:user)
+      
+      @participantes.each do |participante|
+        # Aquí puedes llamar a un método o servicio para enviar el correo electrónico.
+        # Por ejemplo, si estás usando Action Mailer en Rails, puedes llamar a un correo electrónico definido previamente.
+        # Reemplaza 'CorreoParticipanteMailer' y 'correo_participante' con tus propias clases y métodos.
+        UserMailer.correo_participante(participante, @festival).deliver_now
+      end
+      
+      redirect_to admin_festival_path(@festival), notice: 'Correo electrónico enviado a todos los participantes.'
+    end
+
       private
     
       def set_festival

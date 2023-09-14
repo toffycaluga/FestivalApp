@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Estilos para el correo electrónico */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+      }
+      .button {
+        display: inline-block;
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px;
+      }
+      .button-danger {
+        background-color: #dc3545;
+      }
+      p {
+        font-size: 16px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>Felicidades,</h2>
+      <p>Has sido seleccionado entre los muchos artistas que postularon para participar en el festival <strong><%= @festival.name %></strong>.</p>
+      <p>Para confirmar tu asistencia, por favor envía un correo electrónico a <a href="mailto:pistadeorofestival@gmail.com?subject=Confirmación%20de%20Asistencia%20a%20<%= @festival.name %>">pistadeorofestival@gmail.com</a> con el asunto "Confirmación de Asistencia a <%= @festival.name %>".</p>
+      <p>Si has decidido no participar, puedes cancelar tu participación proporcionando un motivo en el mismo correo electrónico.</p>
+      <p>Recuerda que al confirmar tu asistencia, estás aceptando los términos y condiciones del festival.</p>
+      <p>¡Esperamos verte en el festival!</p>
+    </div>
+  </body>
+</html>

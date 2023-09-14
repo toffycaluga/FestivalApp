@@ -1,5 +1,9 @@
 <!-- En app/views/admin/festivals/personas_que_quedaron.html.erb -->
 <h1>Personas que Quedaron en el Festival</h1>
+<div class="d-flex justify-content-end">
+
+  <%= render 'admin/festivals/enviar_correo_a_participantes' %>
+</div>
 
 <table class="table table-bordered border-primary">
   <thead>
@@ -35,8 +39,10 @@
   </tbody>
 </table>
 
+
+
 <% if @festival %>
-  <%= link_to 'Sleccionar Participantes', editar_estado_postulacion_admin_festival_path(@festival), class: 'btn btn-primary mt-3' %>
+  <%= link_to 'Seleccionar Participantes', editar_estado_postulacion_admin_festival_path(@festival), class: 'btn btn-primary mt-3' %>
 <% end %>
 <br>
 <%= link_to 'Volver al Festival', admin_festival_path(@festival) %>
