@@ -10,7 +10,7 @@ class Usuario::DashboardController < ApplicationController
     end
     def profile 
         @count_applies=current_user.applies.count()
-        @count_stakes=current_user.applies.where(quedo_en_festival: true).count
+        @count_stakes=current_user.applies.where(quedo_en_festival: true).count()
 
     end
     before_action :devise_resource
