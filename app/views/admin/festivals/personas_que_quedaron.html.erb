@@ -1,0 +1,48 @@
+<!-- En app/views/admin/festivals/personas_que_quedaron.html.erb -->
+<h1>Personas que Quedaron en el Festival</h1>
+<div class="d-flex justify-content-end">
+
+  <%= render 'admin/festivals/enviar_correo_a_participantes' %>
+</div>
+
+<table class="table table-bordered border-primary">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Email</th>
+      <th>Nombre Artístico</th>
+      <th>acto</th>
+      <th>telefono</th>
+    </tr>
+  </thead>
+  <tbody>
+        
+        <% if @personas_que_quedaron != [] %>
+            
+    
+        
+        <% @personas_que_quedaron.each do |apply| %>
+        <tr>
+            <td><%= apply.user.name %></td>
+            <td><%= apply.user.email %></td>
+            <td><%= apply.name %></td>
+            <td><%= apply.act %></td>
+            <td><%= apply.user.phone_number %></td>
+        </tr>
+        
+
+        <% end %>
+    <% else  %>
+        <p>Aún no hay participantes seleccionados</p>
+    <% end %>
+    
+  </tbody>
+</table>
+
+
+
+<% if @festival %>
+  <%= link_to 'Seleccionar Participantes', editar_estado_postulacion_admin_festival_path(@festival), class: 'btn btn-primary mt-3' %>
+<% end %>
+<br>
+<%= link_to 'Volver al Festival', admin_festival_path(@festival) %>

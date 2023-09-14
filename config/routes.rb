@@ -4,10 +4,13 @@ Rails.application.routes.draw do
   end
   resources :ratings
   resources :festivals do
+    # patch 'actualizar_estado_postulacion', on: :member
     resources :applies
     member do
       get 'terms', to: 'festivals#terms'
       get 'send_terms_notification'
+      patch 'actualizar_estado_postulacion/:apply_id', to: 'festivals#actualizar_estado_postulacion', as: 'actualizar_estado_postulacion'
+   
     end
   end
   get 'home/index'
@@ -19,13 +22,20 @@ Rails.application.routes.draw do
     get 'dashboard', to: 'dashboard#index'
     resources :festivals do
       get 'assign_organizers', on: :collection
+      post 'enviar_correo_a_participantes', on: :member
       post 'assign_organizers', on: :collection, to: 'festivals#process_assign_organizers'
       
       member do
         post 'assign_organizers', to: 'festivals#assign_organizers'
+        get 'editar_estado_postulacion', to: 'festivals#editar_estado_postulacion'
+        patch 'actualizar_estado_postulacion', to: 'festivals#actualizar_estado_postulacion'
+        get 'personas_que_quedaron', to: 'festivals#personas_que_quedaron'
+
+      
       end
       collection do
         get 'assign_organizers' # Define la ruta para la acción assign_organizers
+        get 'seleccionar_festival'
       end
       put :close_applications
       put :close_festival
