@@ -1,0 +1,17 @@
+<!-- En app/views/admin/festivals/seleccionar_festival.html.erb -->
+<h1>Seleccionar Festival Activo</h1>
+
+<% if @festivales_activos.any? %>
+  <p>Por favor, selecciona un festival activo:</p>
+  <ul>
+    <% @festivales_activos.each do |festival| %>
+      <li>
+        <%= link_to festival.name, personas_que_quedaron_admin_festival_path(festival), class: 'btn btn-primary' %>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No hay festivales activos disponibles.</p>
+<% end %>
+
+<%= link_to 'Volver al Dashboard', admin_dashboard_path %>

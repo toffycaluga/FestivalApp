@@ -1,0 +1,12 @@
+<%= form_tag actualizar_estado_postulacion_admin_festival_path(@festival), method: :patch do %>
+  <div class="form-group">
+    <%= label_tag :apply_id, 'Seleccionar Postulante:' %>
+    <%= select_tag :apply_id, options_for_select(@applies.map { |apply| [apply.name, apply.id] }), prompt: 'Seleccione un postulante', class: 'form-select select2' %>
+  </div>
+  
+  <!-- Resto de tu formulario aquí -->
+
+  <div class="form-group text-end">
+    <%= submit_tag 'Guardar Cambios', class: 'btn btn-primary' %>
+  </div>
+<% end %>

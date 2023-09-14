@@ -42,12 +42,48 @@ class Admin::FestivalsController < ApplicationController
   
       
     end
+    def editar_estado_postulacion
+      @festival = Festival.find(params[:id])
+   @applies = @festival.applies.where(terms_and_conditions_accepted: true)
+    @postulantes = User.all.pluck(:name)
+      
+    end
+    
+    def actualizar_estado_postulacion
+      @festival = Festival.find(params[:id])
+      @apply = Apply.find(params[:apply_id])
+    
+      if @apply.update(quedo_en_festival: true)
+        redirect_to admin_festival_path(@festival), notice: 'Estado de postulación actualizado correctamente.'
+      else
+        Rails.logger.error(@apply.errors.inspect) # Esto registrará los errores en el registro de Rails.
+   
+        redirect_to admin_festival_path(@festival), alert: 'Estado de postulación no se actualizado correctamente.'
+      end
+    end
+    
+    
+    def seleccionar_festival
+      @festivales_activos = Festival.where(state: true)
+    end
+
+    def personas_que_quedaron
+      @festival = Festival.find_by(state: true) # Obtener el festival activo basado en el atributo `state`
+      if @festival
+        @personas_que_quedaron = @festival.applies.includes(:user).where(quedo_en_festival: true).map(&:user)
+
+      else
+        @personas_que_quedaron = [] # Si no hay festival activo, establecer la lista como vacía o manejar de acuerdo a tu lógica
+      end
+    end   
     
       private
     
       def set_festival
         @festival = Festival.find(params[:id])
       end
-  
+      def apply_params
+        params.require(:apply).permit(:quedo_en_festival,:festival_id,:apply_id)
+      end
      
 end
