@@ -11,5 +11,13 @@ class UserMailer < ApplicationMailer
       @apply = apply
       mail(to: @user.email, subject: "Acción requerida: Acepta los términos y condiciones para tu postulación")
     end
-  end
+
   
+  # app/mailers/correo_ganador_mailer.rb
+
+  def correo_participante(user, festival)
+    @user = user
+    @festival = festival
+    mail(to: @user.email, subject: '¡Felicidades! Has sido selecionado en nuestro festival')
+  end
+end
