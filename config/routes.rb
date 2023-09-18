@@ -23,6 +23,7 @@ Rails.application.routes.draw do
     resources :festivals do
       get 'assign_organizers', on: :collection
       post 'enviar_correo_a_participantes', on: :member
+      post 'enviar_correo_a_rechazados', on: :member
       post 'assign_organizers', on: :collection, to: 'festivals#process_assign_organizers'
       
       member do

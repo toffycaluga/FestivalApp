@@ -20,4 +20,10 @@ class UserMailer < ApplicationMailer
     @festival = festival
     mail(to: @user.email, subject: '¡Felicidades! Has sido selecionado en nuestro festival')
   end
+  def correo_rechazados(user, festival)
+    @user = user
+    @festival = festival
+    mail(to: @user.email, subject: 'Resultados Postulación a Festival')
+  end
+
 end

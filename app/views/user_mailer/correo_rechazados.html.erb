@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      /* Estilos para el correo electrónico */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f4f4f4;
+      }
+      .container {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #ffffff;
+      }
+      .button {
+        display: inline-block;
+        font-size: 16px;
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 5px;
+        margin: 10px;
+      }
+      .button-danger {
+        background-color: #dc3545;
+      }
+      p {
+        font-size: 16px;
+        margin: 20px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+        <h2><%= @user.name%> </h2>
+        <p>Lamentablemente, queremos informarte que no has sido seleccionado para participar en el festival en esta ocasión.</p>
+        <p>Queremos decirte que, aunque no has sido seleccionado en esta ocasión para el festival  <strong><%= @festival.name %></strong>, creemos en tu talento y pasión por el circo.</p>
+        <p>Este es solo un paso en tu viaje artístico. Te animamos a seguir practicando, mejorando y buscando oportunidades para mostrar tu increíble talento. Cada desafío te hace más fuerte y te acerca más a tus metas.</p>
+        <p>El amor por el circo es una pasión hermosa que merece ser cultivada. Continúa trabajando duro y, sin duda, encontrarás tu momento para brillar en un futuro festival.</p>
+        <p>Apreciamos tu participación y estamos emocionados de ver cómo progresas en tu viaje circense. ¡Sigue adelante con pasión y determinación!</p>
+    </div>
+  </body>
+</html>
